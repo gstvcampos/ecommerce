@@ -1,0 +1,22 @@
+import { SVGProps } from 'react'
+
+export const CheckCircleIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={26}
+    height={26}
+    viewBox="0 0 512 512"
+    {...props}
+  >
+    <path
+      fill="var(--ci-primary-color, currentColor)"
+      d="M426.072 86.928A238.75 238.75 0 0 0 88.428 424.572 238.75 238.75 0 0 0 426.072 86.928ZM257.25 462.5c-114 0-206.75-92.748-206.75-206.75S143.248 49 257.25 49 464 141.748 464 255.75 371.252 462.5 257.25 462.5Z"
+      className="ci-primary"
+    />
+    <path
+      fill="var(--ci-primary-color, currentColor)"
+      d="m221.27 305.808-73.413-73.412-22.627 22.627 96.04 96.04 167.5-167.499-22.628-22.627L221.27 305.808z"
+      className="ci-primary"
+    />
+  </svg>
+)
