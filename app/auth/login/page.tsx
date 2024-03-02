@@ -46,7 +46,6 @@ export default function Login() {
     startTransition(() => {
       loginAction(values, callbackUrl)
         .then((data) => {
-          console.log(data)
           if (data?.error) {
             reset()
             setError(data.error)

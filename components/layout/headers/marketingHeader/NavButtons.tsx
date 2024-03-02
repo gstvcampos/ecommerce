@@ -1,8 +1,7 @@
-import { auth } from '@/auth'
+import { auth, signOut } from '@/auth'
 import { CartIcon } from '@/components/icons/CartIcon'
 import { UserIcon } from '@/components/icons/UserIcon'
 import { getCart } from '@/db/cart'
-import { signOut } from 'next-auth/react'
 import Link from 'next/link'
 
 export default async function NavButtons() {
@@ -34,7 +33,6 @@ export default async function NavButtons() {
                 <form
                   action={async () => {
                     'use server'
-                    console.log('signing out')
                     await signOut()
                   }}
                   className="inline-flex items-center"

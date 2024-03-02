@@ -17,8 +17,6 @@ export default async function editUserInfoAction(
 
   const { name, phoneNumber, cpf } = validatedFields.data
 
-  console.log(phoneNumber)
-
   await prisma.user.update({
     where: { id: userId },
     data: { name, phoneNumber, cpf },
