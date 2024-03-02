@@ -4,7 +4,6 @@ import { getFreightValue } from '@/actions/getFreightValue'
 import { formatPrice } from '@/lib/ultis'
 import cep from 'cep-promise'
 import { useState } from 'react'
-import Redirect from './Redirect'
 
 export default function ResumeCart({ subTotal }: { subTotal: number }) {
   const [cepValue, setcepValue] = useState('')
