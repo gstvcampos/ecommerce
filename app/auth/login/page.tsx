@@ -17,7 +17,7 @@ import GoogleButton from './GoogleButton'
 
 export default function Login() {
   const searchParams = useSearchParams()
-  const callbackUrl = searchParams.get('callback')
+  const callbackUrl = searchParams.get('callbackUrl')
   const urlError =
     searchParams.get('error') === 'OAuthAccountNotLinked' &&
     'Email em uso com outro provider'

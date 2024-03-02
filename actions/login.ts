@@ -1,13 +1,13 @@
 'use server'
 
 import { Login } from '@/@types/auth'
+import { signIn } from '@/auth'
 import { getUserByEmail } from '@/db/user'
 import { sendVerificationEmail } from '@/lib/mail'
 import { generateVerificationToken } from '@/lib/tokens'
+import { DEFAULT_LOGIN_REDIRECT } from '@/routes'
 import { loginSchema } from '@/schemas/auth'
 import { AuthError } from 'next-auth'
-import { signIn } from '@/auth'
-import { DEFAULT_LOGIN_REDIRECT } from '@/routes'
 
 export default async function loginAction(
   values: Login,
@@ -37,6 +37,9 @@ export default async function loginAction(
     )
     return { success: 'Confirmação de email enviada' }
   }
+
+  console.log('callbackUrl:', callbackUrl)
+  console.log('DEFAULT_LOGIN_REDIRECT:', DEFAULT_LOGIN_REDIRECT)
 
   try {
     await signIn('credentials', {
