@@ -1,8 +1,8 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
+import DeleteProductButton from '@/components/buttons/admin/DeleteProductButton'
+import EditProductButton from '@/components/buttons/admin/EditProductButton'
 import { prisma } from '@/db/prisma'
 import Link from 'next/link'
-import DeleteProductButton from './DeleteProductButton'
-import EditProductButton from './EditProductButton'
 
 export default async function AdminProducts() {
   const products = await prisma.product.findMany()
