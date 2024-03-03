@@ -19,8 +19,9 @@ export default function Login() {
   const searchParams = useSearchParams()
   const callbackUrl = searchParams.get('callbackUrl')
   const urlError =
-    searchParams.get('error') === 'OAuthAccountNotLinked' &&
-    'Email em uso com outro provider'
+    searchParams.get('error') === 'OAuthAccountNotLinked'
+      ? 'Email em uso com outro provider'
+      : ''
 
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState<string | undefined>('')
