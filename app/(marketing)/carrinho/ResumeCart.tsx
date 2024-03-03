@@ -6,13 +6,13 @@ import cep from 'cep-promise'
 import { useState } from 'react'
 
 export default function ResumeCart({ subTotal }: { subTotal: number }) {
-  const [cepValue, setcepValue] = useState('')
+  const [cepValue, setCepValue] = useState('')
   const [error, setError] = useState('')
   const [options, setOptions] = useState(null)
   const [selectedOption, setSelectedOption] = useState(0)
 
   const handleFreightChange = (e) => {
-    setcepValue(e.target.value)
+    setCepValue(e.target.value)
   }
 
   const handleOptionChange = (optionId) => {
