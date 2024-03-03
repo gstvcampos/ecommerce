@@ -1,9 +1,9 @@
+import { auth } from '@/auth'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
+import FormEditUser from '@/components/forms/marketing/FormEditUser'
 import { ArrowLeftIcon } from '@/components/icons/ArrowLeftIcon'
 import { getUserById } from '@/db/user'
 import Link from 'next/link'
-import { auth } from '@/auth'
-import FormEditUser from './FormEditUser'
 
 export default async function DadosPessoais() {
   const session = await auth()
