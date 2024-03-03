@@ -1,9 +1,9 @@
 import { auth } from '@/auth'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
+import DeleteAddressButton from '@/components/buttons/marketing/DeleteAddressButton'
 import { ArrowLeftIcon } from '@/components/icons/ArrowLeftIcon'
 import { prisma } from '@/db/prisma'
 import Link from 'next/link'
-import DeleteAddressButton from './DeleteAddressButton'
 
 export default async function Enderecos() {
   const session = await auth()

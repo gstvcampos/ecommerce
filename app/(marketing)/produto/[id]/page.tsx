@@ -1,13 +1,13 @@
 import { incrementProductQuantity } from '@/actions/incrementProductQuantity'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
+import AddToCartButton from '@/components/buttons/marketing/AddToCartButton'
+import { CarouselGalleryWidget } from '@/components/sliders/CarouselGalleryWidget'
 import { prisma } from '@/db/prisma'
 import { formatPrice } from '@/lib/ultis'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { cache } from 'react'
-import { CarouselGalleryWidget } from '@/components/sliders/CarouselGalleryWidget'
-import AddToCartButton from './AddToCartButton'
 
 interface ProductDetailProps {
   params: {
