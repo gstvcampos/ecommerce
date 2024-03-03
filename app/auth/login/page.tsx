@@ -6,14 +6,14 @@ import FormError from '@/components/FormError'
 import FormSuccess from '@/components/FormSuccess'
 import { Input } from '@/components/Input'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
+import FacebookButton from '@/components/buttons/auth/FacebookButton'
+import GoogleButton from '@/components/buttons/auth/GoogleButton'
 import { loginSchema } from '@/schemas/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
-import FacebookButton from './FacebookButton'
-import GoogleButton from './GoogleButton'
 
 export default function Login() {
   const searchParams = useSearchParams()
