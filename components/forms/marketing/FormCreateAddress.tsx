@@ -72,7 +72,7 @@ export default function FormCreateAddress() {
       <Input label="UF" {...register('state')} error={errors.state} />
       <FormError message={error} />
       <FormSuccess message={success} />
-      <button type="submit" disabled={isPending} className="btn w-full">
+      <button type="submit" disabled={isPending} className="btn w-full my-4">
         ADICIONAR ENDEREÇO
         {isPending && <span className="loading loading-spinner loading-md" />}
       </button>

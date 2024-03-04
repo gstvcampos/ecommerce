@@ -10,7 +10,7 @@ export default async function DadosPessoais() {
   const user = await getUserById(session?.user.id)
 
   return (
-    <MaxWidthWrapper className="py-12 min-h-96">
+    <MaxWidthWrapper className="py-12 min-h-96 max-w-xl">
       <Link
         href={'/minha-conta'}
         className="flex items-center text-sm hover:underline ml-3"

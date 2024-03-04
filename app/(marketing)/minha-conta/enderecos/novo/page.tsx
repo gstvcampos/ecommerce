@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 export default async function NewAddress() {
   return (
-    <MaxWidthWrapper className="py-12 min-h-96">
+    <MaxWidthWrapper className="py-12 min-h-96 max-w-xl">
       <Link
         href={'/minha-conta/enderecos'}
         className="flex items-center text-sm hover:underline ml-3"

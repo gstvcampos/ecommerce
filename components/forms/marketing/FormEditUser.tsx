@@ -58,7 +58,7 @@ export default function FormEditUser({ user }) {
       <Input label="CPF" {...register('cpf')} error={errors.cpf} />
       <FormError message={error} />
       <FormSuccess message={success} />
-      <button className="btn w-full" disabled={isPending}>
+      <button className="btn w-full my-4" disabled={isPending}>
         SALVAR ALTERAÇÕES
       </button>
     </form>
