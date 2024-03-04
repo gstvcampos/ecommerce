@@ -1,5 +1,5 @@
 import Footer from '@/components/layout/footers/Footer'
-import Header from '@/components/layout/headers/marketingHeader/Header'
+import Header from '@/components/layout/headers/marketing/Header'
 
 export default async function MarketingLayout({
   children,
