@@ -2,8 +2,6 @@
 
 import { Login } from '@/@types/auth'
 import loginAction from '@/actions/login'
-import FormError from '@/components/FormError'
-import FormSuccess from '@/components/FormSuccess'
 import { Input } from '@/components/Input'
 import { loginSchema } from '@/schemas/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -11,6 +9,8 @@ import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
+import FormError from '../FormError'
+import FormSuccess from '../FormSuccess'
 
 export default function LoginForm() {
   const searchParams = useSearchParams()

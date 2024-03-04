@@ -2,13 +2,13 @@
 
 import { Reset } from '@/@types/auth'
 import { resetAction } from '@/actions/reset'
-import FormError from '@/components/FormError'
-import FormSuccess from '@/components/FormSuccess'
 import { Input } from '@/components/Input'
 import { resetSchema } from '@/schemas/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
+import FormError from '../FormError'
+import FormSuccess from '../FormSuccess'
 
 export default function ResetPasswordForm() {
   const [isPending, startTransition] = useTransition()

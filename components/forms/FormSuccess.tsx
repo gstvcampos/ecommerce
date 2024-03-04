@@ -1,4 +1,4 @@
-import { CheckCircleIcon } from './icons/CheckCircleIcon'
+import { CheckCircleIcon } from '../icons/CheckCircleIcon'
 
 export default function FormSuccess({ message }: { message?: string }) {
   if (!message) return null

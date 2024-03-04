@@ -1,4 +1,4 @@
-import { ExclamationTriangleIcon } from './icons/ExclamationTriangleIcon'
+import { ExclamationTriangleIcon } from '../icons/ExclamationTriangleIcon'
 
 export default function FormError({ message }: { message?: string }) {
   if (!message) return null

@@ -2,8 +2,6 @@
 
 import { CreateAddress } from '@/@types/address'
 import { createAddressAction } from '@/actions/createAddress'
-import FormError from '@/components/FormError'
-import FormSuccess from '@/components/FormSuccess'
 import { Input } from '@/components/Input'
 import { createAddressSchema } from '@/schemas/address'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -11,6 +9,8 @@ import cep from 'cep-promise'
 import { useSession } from 'next-auth/react'
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
+import FormError from '../FormError'
+import FormSuccess from '../FormSuccess'
 
 export default function FormCreateAddress() {
   const session = useSession()

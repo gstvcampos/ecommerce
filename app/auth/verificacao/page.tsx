@@ -1,8 +1,8 @@
 'use client'
 
 import { newVerification } from '@/actions/newVerification'
-import FormError from '@/components/FormError'
-import FormSuccess from '@/components/FormSuccess'
+import FormError from '@/components/forms/FormError'
+import FormSuccess from '@/components/forms/FormSuccess'
 import { useSearchParams } from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
 

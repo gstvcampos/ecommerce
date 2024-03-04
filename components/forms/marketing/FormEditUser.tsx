@@ -2,14 +2,13 @@
 
 import { EditUser } from '@/@types/user'
 import editUserInfoAction from '@/actions/editUserInfoAction'
-import FormError from '@/components/FormError'
-import FormSuccess from '@/components/FormSuccess'
 import { Input } from '@/components/Input'
 import { editUserSchema } from '@/schemas/user'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useState, useTransition } from 'react'
-
 import { useForm } from 'react-hook-form'
+import FormError from '../FormError'
+import FormSuccess from '../FormSuccess'
 
 export default function FormEditUser({ user }) {
   const [isPending, startTransition] = useTransition()

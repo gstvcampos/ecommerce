@@ -2,11 +2,11 @@
 
 import { CreateProduct } from '@/@types/product'
 import { addProduct } from '@/actions/addProducts'
-import FormError from '@/components/FormError'
-import FormSuccess from '@/components/FormSuccess'
 import { Input } from '@/components/Input'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import MultipleImgInput from '@/components/MultipleImgInput'
+import FormError from '@/components/forms/FormError'
+import FormSuccess from '@/components/forms/FormSuccess'
 import { createProductSchema } from '@/schemas/product'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useState, useTransition } from 'react'
