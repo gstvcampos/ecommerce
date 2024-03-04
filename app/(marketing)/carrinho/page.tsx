@@ -1,9 +1,9 @@
 import setProductQuantity from '@/actions/setProductQuantity'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
+import CartEntry from '@/components/cart/CartEntry'
+import ResumeCart from '@/components/cart/ResumeCart'
 import { getCart } from '@/db/cart'
 import Link from 'next/link'
-import CartEntry from './CartEntry'
-import ResumeCart from './ResumeCart'
 
 export default async function CartPage() {
   const cart = await getCart()
