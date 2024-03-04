@@ -8,24 +8,25 @@ import { useState } from 'react'
 export default function ResumeCart({ subTotal }: { subTotal: number }) {
   const [cepValue, setCepValue] = useState('')
   const [error, setError] = useState('')
-  const [options, setOptions] = useState(null)
-  const [selectedOption, setSelectedOption] = useState(0)
+  const [freightOptions, setFreightOptions] = useState(null)
+  const [selectedFreightValue, setSelectedFreightValue] = useState(0)
 
-  const handleFreightChange = (e) => {
+  const handleFreightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCepValue(e.target.value)
   }
 
-  const handleOptionChange = (optionId) => {
-    setSelectedOption(optionId)
+  const handleOptionChange = (freight: number) => {
+    setSelectedFreightValue(freight)
     cep(cepValue)
   }
 
-  const handleSubmit = async (e) => {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     try {
       await cep(cepValue)
       const freightData = await getFreightValue(cepValue)
-      setOptions(freightData)
+      console.log(freightData)
+      setFreightOptions(freightData)
     } catch (error) {
       setError('cep inválido')
     }
@@ -67,22 +68,24 @@ export default function ResumeCart({ subTotal }: { subTotal: number }) {
       </div>
 
       <form>
-        {options &&
-          options.map(
-            (option) =>
-              option.price && (
-                <div key={option.id}>
+        {freightOptions &&
+          freightOptions.map(
+            (freightOption) =>
+              freightOption.price && (
+                <div key={freightOption.id}>
                   <input
                     type="radio"
-                    id={option.id}
+                    id={freightOption.id}
                     className="radio"
-                    checked={selectedOption === parseFloat(option.price)}
+                    checked={
+                      selectedFreightValue === parseFloat(freightOption.price)
+                    }
                     onChange={() =>
-                      handleOptionChange(parseFloat(option.price))
+                      handleOptionChange(parseFloat(freightOption.price))
                     }
                   />
-                  <label htmlFor={option.id}>
-                    {option.name} - {option.price}
+                  <label htmlFor={freightOption.id}>
+                    {freightOption.name} - {freightOption.price}
                   </label>
                 </div>
               ),
@@ -91,7 +94,7 @@ export default function ResumeCart({ subTotal }: { subTotal: number }) {
 
       <div className="flex justify-between items-center">
         <p>Total</p>
-        <p> {formatPrice(subTotal + selectedOption)}</p>
+        <p> {formatPrice(subTotal + selectedFreightValue)}</p>
       </div>
     </>
   )
