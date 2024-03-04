@@ -2,9 +2,7 @@ import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import ProductCard from '@/components/ProductCard'
 import DrawerSearchFilter from '@/components/search/DrawerSearchFilter'
 import DropdownSearchSort from '@/components/search/DropdownSearchSort'
-import { prisma } from '@/db/prisma'
-import { notFound } from 'next/navigation'
-import { cache } from 'react'
+import { getSearchProducts } from '@/db/products'
 
 interface SearchPageProps {
   params: {
@@ -12,20 +10,6 @@ interface SearchPageProps {
   }
   searchParams?: { [key: string]: string | string[] | undefined }
 }
-
-const getProducts = cache(async (search: string) => {
-  const products = await prisma.product.findMany({
-    where: {
-      OR: [
-        { name: { contains: search, mode: 'insensitive' } },
-        { department: { contains: search, mode: 'insensitive' } },
-        { category: { contains: search, mode: 'insensitive' } },
-      ],
-    },
-  })
-  if (!products) notFound()
-  return products
-})
 
 export default async function CategoryPage({
   params: { search },
@@ -35,7 +19,7 @@ export default async function CategoryPage({
   const filterParams = searchParams?.filter
   console.log(sortParams)
   console.log(filterParams)
-  const products = await getProducts(search)
+  const products = await getSearchProducts(search)
 
   return (
     <MaxWidthWrapper>
