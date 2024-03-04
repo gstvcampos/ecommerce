@@ -1,4 +1,8 @@
+import Link from 'next/link'
+
 export default function DropdownSearchSort() {
+  const sortVariants = ['ASC', 'DESC', 'PROMO', 'POPULAR']
+
   return (
     <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-outline m-1">
@@ -8,18 +12,11 @@ export default function DropdownSearchSort() {
         tabIndex={0}
         className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
       >
-        <li>
-          <a>Preço crescente</a>
-        </li>
-        <li>
-          <a>Preço decrescente</a>
-        </li>
-        <li>
-          <a>Promoções</a>
-        </li>
-        <li>
-          <a>Mais procurados</a>
-        </li>
+        {sortVariants.map((sort, idx) => (
+          <li key={idx}>
+            <Link href={`?${new URLSearchParams({ sort })}`}>{sort}</Link>
+          </li>
+        ))}
       </ul>
     </div>
   )

@@ -16,9 +16,11 @@ export default async function CategoryPage({
   searchParams,
 }: SearchPageProps) {
   const sortParams = searchParams?.sort
-  const filterParams = searchParams?.filter
+  const sizeParams = searchParams?.size
+  const categoryParams = searchParams?.category
   console.log(sortParams)
-  console.log(filterParams)
+  console.log(sizeParams)
+  console.log(categoryParams)
   const products = await getSearchProducts(search)
 
   return (
