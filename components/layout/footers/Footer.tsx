@@ -13,9 +13,9 @@ export default function Footer() {
         <nav>
           <h6 className="footer-title">Fale conosco</h6>
           <a className="link link-hover">
-            (21)2121-2121 para Atendimento ao Cliente
+            (00)0000-0000 para Atendimento ao Cliente
           </a>
-          <a className="link link-hover"> store@vasco.com.br</a>
+          <a className="link link-hover"> teste@loja.com.br</a>
         </nav>
         <form>
           <h6 className="footer-title">Receba nossas Ofertas e Novidades</h6>
