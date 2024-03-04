@@ -3,11 +3,9 @@ import Breadcrumbs from '@/components/Breadcrumbs'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import AddToCartButton from '@/components/buttons/marketing/AddToCartButton'
 import { CarouselGalleryWidget } from '@/components/sliders/CarouselGalleryWidget'
-import { prisma } from '@/db/prisma'
+import { getProductById } from '@/db/products'
 import { formatPrice } from '@/lib/ultis'
 import { Metadata } from 'next'
-import { notFound } from 'next/navigation'
-import { cache } from 'react'
 
 interface ProductDetailProps {
   params: {
@@ -15,16 +13,10 @@ interface ProductDetailProps {
   }
 }
 
-const getProduct = cache(async (id: string) => {
-  const product = await prisma.product.findUnique({ where: { id } })
-  if (!product) notFound()
-  return product
-})
-
 export async function generateMetadata({
   params: { id },
 }: ProductDetailProps): Promise<Metadata> {
-  const product = await getProduct(id)
+  const product = await getProductById(id)
 
   return {
     title: product.name + 'teststore',
@@ -35,7 +27,7 @@ export async function generateMetadata({
 export default async function ProductDetail({
   params: { id },
 }: ProductDetailProps) {
-  const product = await getProduct(id)
+  const product = await getProductById(id)
 
   return (
     <MaxWidthWrapper className="pb-20">

@@ -2,6 +2,19 @@ import { notFound } from 'next/navigation'
 import { cache } from 'react'
 import { prisma } from './prisma'
 
+export const getProducts = cache(
+  async (department: string, category?: string) => {
+    const products = await prisma.product.findMany({
+      where: {
+        department,
+        category,
+      },
+    })
+    if (!products) notFound()
+    return products
+  },
+)
+
 export const getSearchProducts = cache(async (search: string) => {
   const products = await prisma.product.findMany({
     where: {
@@ -16,15 +29,8 @@ export const getSearchProducts = cache(async (search: string) => {
   return products
 })
 
-export const getProducts = cache(
-  async (department: string, category?: string) => {
-    const products = await prisma.product.findMany({
-      where: {
-        department,
-        category,
-      },
-    })
-    if (!products) notFound()
-    return products
-  },
-)
+export const getProductById = cache(async (id: string) => {
+  const product = await prisma.product.findUnique({ where: { id } })
+  if (!product) notFound()
+  return product
+})
