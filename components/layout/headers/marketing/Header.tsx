@@ -8,13 +8,13 @@ import SearchInput from './SearchInput'
 export default function Header() {
   return (
     <div className="w-full">
-      <header className="flex items-center justify-between max-w-screen-xl mx-auto min-h-20">
+      <header className="flex items-center justify-between max-w-screen-xl mx-auto min-h-16">
         <div className="flex-none md:hidden">
           <Drawer id="menu" title="todas as categorias" icon={<MenuIcon />}>
             <NavItems />
           </Drawer>
         </div>
-        <Link href={'/'}>
+        <Link href={'/'} className="px-8">
           <svg
             width="36"
             height="36"
