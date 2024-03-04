@@ -11,7 +11,7 @@ import { useSearchParams } from 'next/navigation'
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 
-export default function NewPasswordForm() {
+export default function RegisterNewPasswordForm() {
   const searchParams = useSearchParams()
   const token = searchParams.get('token')
 
