@@ -6,9 +6,10 @@ import { getFreightValue } from '@/actions/getFreightValue'
 import { formatPrice } from '@/lib/ultis'
 import { useState } from 'react'
 import { CepInput } from '../CepInput'
+import OptionsFreightSelect from '../OptionsFreightSelect'
 
 export default function ResumeCart({ subTotal }: { subTotal: number }) {
-  const [selectedFreightValue, setSelectedFreightValue] = useState(0)
+  const [selectedFreight, setSelectedFreight] = useState(0)
   const [freightOptions, setFreightOptions] = useState<null | melhorEnvioData>(
     null,
   )
@@ -18,8 +19,8 @@ export default function ResumeCart({ subTotal }: { subTotal: number }) {
     setFreightOptions(freightData)
   }
 
-  const handleOptionChange = (freight: number) => {
-    setSelectedFreightValue(freight)
+  function getFreightSelect(price: number | null) {
+    setSelectedFreight(price || 0)
   }
 
   return (
@@ -32,34 +33,14 @@ export default function ResumeCart({ subTotal }: { subTotal: number }) {
 
       <CepInput getAddress={getAddress} />
 
-      <form>
-        {freightOptions &&
-          freightOptions.map(
-            (freightOption) =>
-              freightOption.price && (
-                <div key={freightOption.id}>
-                  <input
-                    type="radio"
-                    id={freightOption.id.toString()}
-                    className="radio"
-                    checked={
-                      selectedFreightValue === parseFloat(freightOption.price)
-                    }
-                    onChange={() =>
-                      handleOptionChange(parseFloat(freightOption.price))
-                    }
-                  />
-                  <label htmlFor={freightOption.id.toString()}>
-                    {freightOption.name} - {freightOption.price}
-                  </label>
-                </div>
-              ),
-          )}
-      </form>
+      <OptionsFreightSelect
+        freightOptions={freightOptions}
+        getFreightSelect={getFreightSelect}
+      />
 
       <div className="flex justify-between items-center">
         <p>Total</p>
-        <p> {formatPrice(subTotal + selectedFreightValue)}</p>
+        <p> {formatPrice(subTotal + selectedFreight)}</p>
       </div>
     </>
   )
