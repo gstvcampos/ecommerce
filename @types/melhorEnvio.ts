@@ -41,4 +41,4 @@ export type melhorEnvioData = {
     name: string
     picture: string
   }
-}
+}[]

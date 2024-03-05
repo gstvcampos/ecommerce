@@ -1,38 +1,25 @@
 'use client'
 
+import { Address } from '@/@types/address'
 import { melhorEnvioData } from '@/@types/melhorEnvio'
 import { getFreightValue } from '@/actions/getFreightValue'
 import { formatPrice } from '@/lib/ultis'
-import cep from 'cep-promise'
 import { useState } from 'react'
+import { CepInput } from '../CepInput'
 
 export default function ResumeCart({ subTotal }: { subTotal: number }) {
-  const [cepValue, setCepValue] = useState('')
-  const [error, setError] = useState('')
-  const [freightOptions, setFreightOptions] = useState<
-    null | melhorEnvioData[]
-  >(null)
   const [selectedFreightValue, setSelectedFreightValue] = useState(0)
+  const [freightOptions, setFreightOptions] = useState<null | melhorEnvioData>(
+    null,
+  )
 
-  const handleFreightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCepValue(e.target.value)
+  async function getAddress(address: Address) {
+    const freightData = await getFreightValue(address.cep)
+    setFreightOptions(freightData)
   }
 
   const handleOptionChange = (freight: number) => {
     setSelectedFreightValue(freight)
-    cep(cepValue)
-  }
-
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    setError('')
-    try {
-      await cep(cepValue)
-      const freightData = await getFreightValue(cepValue)
-      setFreightOptions(freightData)
-    } catch (error) {
-      setError('cep inválido')
-    }
   }
 
   return (
@@ -43,32 +30,7 @@ export default function ResumeCart({ subTotal }: { subTotal: number }) {
         <p>{formatPrice(subTotal)}</p>
       </div>
 
-      <div>
-        <form onSubmit={handleSubmit} className="join relative w-full">
-          <input
-            type="text"
-            id="floating_outlined"
-            name="freight"
-            className="w-full border px-3 focus:outline-none pb-2.5 pt-4 text-sm peer"
-            placeholder=" "
-            value={cepValue}
-            onChange={handleFreightChange}
-          />
-          <label
-            htmlFor="floating_outlined"
-            className="absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1 bg-primary-content"
-          >
-            CEP
-          </label>
-          <button
-            type="submit"
-            className="border absolute top-0 end-0 h-full p-2.5"
-          >
-            Calcular
-          </button>
-        </form>
-        {error && <span className="text-sm text-red-600">{error}</span>}
-      </div>
+      <CepInput getAddress={getAddress} />
 
       <form>
         {freightOptions &&
