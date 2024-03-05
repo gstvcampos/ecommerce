@@ -9,8 +9,8 @@ export default async function CartPage() {
   const cart = await getCart()
   return (
     <MaxWidthWrapper className="py-8 flex justify-between flex-wrap">
-      <div className="w-2/3 p-4">
-        <h2 className="text-xl">Meu Carrinho</h2>
+      <div className="w-full md:w-2/3 p-4">
+        <h2 className="text-2xl font-bold">Meu Carrinho</h2>
         {cart?.items.map((cartItem) => (
           <CartEntry
             cartItem={cartItem}
@@ -20,7 +20,7 @@ export default async function CartPage() {
         ))}
         {!cart?.items.length && <div>carrinho vazio</div>}
       </div>
-      <div className="w-1/3 p-4 gap-4 flex flex-col">
+      <div className="w-full md:w-1/3 p-4 gap-4 flex flex-col">
         <ResumeCart subTotal={cart?.subtotal || 0} />
         <Link href={'/pagamento'} className="btn btn-primary w-full">
           IR PARA PAGAMENTO
