@@ -1,6 +1,6 @@
 'use client'
 
-import { melhorEnvioResponse } from '@/@types/melhorEnvio'
+import { melhorEnvioData } from '@/@types/melhorEnvio'
 import { getFreightValue } from '@/actions/getFreightValue'
 import { formatPrice } from '@/lib/ultis'
 import cep from 'cep-promise'
@@ -10,7 +10,7 @@ export default function ResumeCart({ subTotal }: { subTotal: number }) {
   const [cepValue, setCepValue] = useState('')
   const [error, setError] = useState('')
   const [freightOptions, setFreightOptions] = useState<
-    null | melhorEnvioResponse[]
+    null | melhorEnvioData[]
   >(null)
   const [selectedFreightValue, setSelectedFreightValue] = useState(0)
 
@@ -25,10 +25,10 @@ export default function ResumeCart({ subTotal }: { subTotal: number }) {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    setError('')
     try {
       await cep(cepValue)
       const freightData = await getFreightValue(cepValue)
-      console.log(freightData)
       setFreightOptions(freightData)
     } catch (error) {
       setError('cep inválido')
@@ -67,7 +67,7 @@ export default function ResumeCart({ subTotal }: { subTotal: number }) {
             Calcular
           </button>
         </form>
-        {error && <span className="text-sm">{error}</span>}
+        {error && <span className="text-sm text-red-600">{error}</span>}
       </div>
 
       <form>

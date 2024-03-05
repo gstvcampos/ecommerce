@@ -1,4 +1,4 @@
-export type melhorEnvioResponse = {
+export type melhorEnvioData = {
   id: number
   name: string
   price: string
