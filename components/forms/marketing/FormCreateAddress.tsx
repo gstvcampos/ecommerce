@@ -1,6 +1,7 @@
 'use client'
 
 import { Address } from '@/@types/address'
+import { State } from '@/@types/state'
 import { createAddressAction } from '@/actions/createAddress'
 import { CepInput } from '@/components/CepInput'
 import { Input } from '@/components/Input'
@@ -17,7 +18,10 @@ const initialState = {
 export default function FormCreateAddress() {
   const { pending } = useFormStatus()
   const [address, setAddress] = useState<Address | null>(null)
-  const [state, formAction] = useFormState(createAddressAction, initialState)
+  const [state, formAction] = useFormState<State, FormData>(
+    createAddressAction,
+    initialState,
+  )
 
   async function getAddress(address: Address) {
     setAddress(address)
@@ -28,7 +32,7 @@ export default function FormCreateAddress() {
       <CepInput getAddress={getAddress} />
       {address && (
         <form action={formAction}>
-          <div className="text-sm">
+          <div className="text-sm my-4">
             <p>{address?.street}</p>
             <p>
               <span>{address?.neighborhood}</span>
@@ -42,9 +46,15 @@ export default function FormCreateAddress() {
           <input hidden name="state" value={address?.state} />
           <input hidden name="street" value={address?.street} />
           <Input label="Número" name="number" />
-          <FormError message={state?.error} />
-          <FormSuccess message={state?.success} />
-          <button type="submit" disabled={pending} className="btn w-full my-4">
+          <div className="my-4">
+            <FormError message={state?.error} />
+            <FormSuccess message={state?.success} />
+          </div>
+          <button
+            type="submit"
+            aria-disabled={pending}
+            className="btn w-full my-4"
+          >
             ADICIONAR ENDEREÇO
             {pending && <span className="loading loading-spinner loading-md" />}
           </button>

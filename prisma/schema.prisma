@@ -48,7 +48,7 @@ model Address {
   id           String @id @default(auto()) @map("_id") @db.ObjectId
   cep          String
   street       String
-  number       Int
+  number       String?
   neighborhood String
   city         String
   state        String
