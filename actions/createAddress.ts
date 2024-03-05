@@ -1,33 +1,29 @@
 'use server'
 
-import { CreateAddress } from '@/@types/address'
+import { auth } from '@/auth'
 import { prisma } from '@/db/prisma'
-import { createAddressSchema } from '@/schemas/address'
+import { AddressSchema } from '@/schemas/address'
 import { revalidatePath } from 'next/cache'
 
-export async function createAddressAction(
-  values: CreateAddress,
-  userId: string,
-) {
-  const validatedFields = createAddressSchema.safeParse(values)
+export async function createAddressAction(prevState: any, formData: any) {
+  const session = await auth()
+  const userId = session?.user.id
+  const formDataObj = Object.fromEntries(formData.entries())
 
-  if (!validatedFields.success) {
-    return { error: 'Invalid fields!' }
+  if (!session) {
+    return { error: 'Usuario não autenticado' }
   }
 
-  const { cep, street, city, neighborhood, number, state } =
-    validatedFields.data
+  const validatedFields = AddressSchema.safeParse(formDataObj)
+  const { data: addressData } = validatedFields
 
-  const intNumber = Number(number)
+  if (!validatedFields.success) {
+    return { error: 'Campos invalidos!' }
+  }
 
   await prisma.address.create({
     data: {
-      cep,
-      street,
-      city,
-      neighborhood,
-      number: intNumber,
-      state,
+      ...addressData,
       userId,
     },
   })

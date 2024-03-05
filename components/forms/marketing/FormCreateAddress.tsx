@@ -1,45 +1,23 @@
 'use client'
 
-import { Address, CreateAddress } from '@/@types/address'
+import { Address } from '@/@types/address'
 import { createAddressAction } from '@/actions/createAddress'
 import { CepInput } from '@/components/CepInput'
 import { Input } from '@/components/Input'
-import { createAddressSchema } from '@/schemas/address'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useSession } from 'next-auth/react'
-import { useState, useTransition } from 'react'
-import { useForm } from 'react-hook-form'
+import { useState } from 'react'
+import { useFormState, useFormStatus } from 'react-dom'
 import FormError from '../FormError'
 import FormSuccess from '../FormSuccess'
 
+const initialState = {
+  error: '',
+  success: '',
+}
+
 export default function FormCreateAddress() {
-  const session = useSession()
-  const [isPending, startTransition] = useTransition()
-  const [error, setError] = useState<string | undefined>('')
-  const [success, setSuccess] = useState<string | undefined>('')
+  const { pending } = useFormStatus()
   const [address, setAddress] = useState<Address | null>(null)
-
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    setFocus,
-    formState: { errors },
-  } = useForm<CreateAddress>({
-    resolver: zodResolver(createAddressSchema),
-  })
-
-  async function handleCreateAddress(values: CreateAddress) {
-    setError('')
-    setSuccess('')
-
-    startTransition(() => {
-      createAddressAction(values, session.data?.user.id).then((data) => {
-        setError(data.error)
-        setSuccess(data.success)
-      })
-    })
-  }
+  const [state, formAction] = useFormState(createAddressAction, initialState)
 
   async function getAddress(address: Address) {
     setAddress(address)
@@ -49,7 +27,7 @@ export default function FormCreateAddress() {
     <>
       <CepInput getAddress={getAddress} />
       {address && (
-        <form>
+        <form action={formAction}>
           <div className="text-sm">
             <p>{address?.street}</p>
             <p>
@@ -58,47 +36,20 @@ export default function FormCreateAddress() {
               <span> - {address?.state}</span>
             </p>
           </div>
-          <Input label="Número" />
-          <FormError message={error} />
-          <FormSuccess message={success} />
-          <button
-            type="submit"
-            disabled={isPending}
-            className="btn w-full my-4"
-          >
+          <input hidden name="cep" value={address?.cep} />
+          <input hidden name="city" value={address?.city} />
+          <input hidden name="neighborhood" value={address?.neighborhood} />
+          <input hidden name="state" value={address?.state} />
+          <input hidden name="street" value={address?.street} />
+          <Input label="Número" name="number" />
+          <FormError message={state?.error} />
+          <FormSuccess message={state?.success} />
+          <button type="submit" disabled={pending} className="btn w-full my-4">
             ADICIONAR ENDEREÇO
-            {isPending && (
-              <span className="loading loading-spinner loading-md" />
-            )}
+            {pending && <span className="loading loading-spinner loading-md" />}
           </button>
         </form>
       )}
-
-      <form onSubmit={handleSubmit(handleCreateAddress)}>
-        <Input label="CEP" {...register('cep')} />
-        {error && (
-          <span className="text-red-500 text-sm mt-1 h-0">{error}</span>
-        )}
-        <Input
-          label="Logradouro"
-          {...register('street')}
-          error={errors.street}
-        />
-        <Input label="Número" {...register('number')} error={errors.number} />
-        <Input
-          label="Bairro"
-          {...register('neighborhood')}
-          error={errors.neighborhood}
-        />
-        <Input label="Cidade" {...register('city')} error={errors.city} />
-        <Input label="UF" {...register('state')} error={errors.state} />
-        <FormError message={error} />
-        <FormSuccess message={success} />
-        <button type="submit" disabled={isPending} className="btn w-full my-4">
-          ADICIONAR ENDEREÇO
-          {isPending && <span className="loading loading-spinner loading-md" />}
-        </button>
-      </form>
     </>
   )
 }
