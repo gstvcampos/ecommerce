@@ -57,7 +57,7 @@ export const CarouselGalleryWidget = ({
     setTimeout(() => setMoving(false), 600)
   }
 
-  const handleThumbnailClick = (i) => {
+  const handleThumbnailClick = (i: number) => {
     if (moving) return
     setMoving(true)
     const carousel = carouselRef.current
