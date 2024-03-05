@@ -11,7 +11,7 @@ const mont = Montserrat({
 })
 
 export const metadata: Metadata = {
-  title: 'Vasco Store',
+  title: 'Hashtag Store',
   description: 'Loja oficial do vasco da gama',
 }
 
