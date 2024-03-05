@@ -3,6 +3,7 @@
 import { Address } from '@/@types/address'
 import cep from 'cep-promise'
 import { useState } from 'react'
+import { SearchIcon } from './icons/SearchIcon'
 
 export function CepInput({
   getAddress,
@@ -42,9 +43,9 @@ export function CepInput({
         </label>
         <button
           type="submit"
-          className="border absolute top-0 end-0 h-full p-2.5"
+          className="border absolute top-0 end-0 h-full p-4"
         >
-          Calcular
+          <SearchIcon />
         </button>
       </form>
       {error && <span className="text-sm text-red-600">{error}</span>}
