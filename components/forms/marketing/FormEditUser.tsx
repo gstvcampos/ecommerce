@@ -1,6 +1,6 @@
 'use client'
 
-import { EditUser } from '@/@types/user'
+import { EditUser, User } from '@/@types/user'
 import editUserInfoAction from '@/actions/editUserInfoAction'
 import { Input } from '@/components/Input'
 import { editUserSchema } from '@/schemas/user'
@@ -10,7 +10,7 @@ import { useForm } from 'react-hook-form'
 import FormError from '../FormError'
 import FormSuccess from '../FormSuccess'
 
-export default function FormEditUser({ user }) {
+export default function FormEditUser({ user }: { user: User }) {
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState<string | undefined>('')
   const [success, setSuccess] = useState<string | undefined>('')

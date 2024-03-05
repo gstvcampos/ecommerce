@@ -1,3 +1,4 @@
+import { User } from '@/@types/user'
 import { auth } from '@/auth'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import FormEditUser from '@/components/forms/marketing/FormEditUser'
@@ -7,7 +8,7 @@ import Link from 'next/link'
 
 export default async function DadosPessoais() {
   const session = await auth()
-  const user = await getUserById(session?.user.id)
+  const user = await getUserById(session!.user!.id!)
 
   return (
     <MaxWidthWrapper className="py-12 min-h-96 max-w-xl">
@@ -19,7 +20,7 @@ export default async function DadosPessoais() {
         Voltar
       </Link>
       <h2 className="py-4 font-bold text-2xl">Dados pessoais</h2>
-      <FormEditUser user={user} />
+      <FormEditUser user={user as User} />
     </MaxWidthWrapper>
   )
 }
