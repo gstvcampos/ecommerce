@@ -1,5 +1,6 @@
 'use client'
 
+import { melhorEnvioResponse } from '@/@types/melhorEnvio'
 import { getFreightValue } from '@/actions/getFreightValue'
 import { formatPrice } from '@/lib/ultis'
 import cep from 'cep-promise'
@@ -8,7 +9,9 @@ import { useState } from 'react'
 export default function ResumeCart({ subTotal }: { subTotal: number }) {
   const [cepValue, setCepValue] = useState('')
   const [error, setError] = useState('')
-  const [freightOptions, setFreightOptions] = useState(null)
+  const [freightOptions, setFreightOptions] = useState<
+    null | melhorEnvioResponse[]
+  >(null)
   const [selectedFreightValue, setSelectedFreightValue] = useState(0)
 
   const handleFreightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,7 +78,7 @@ export default function ResumeCart({ subTotal }: { subTotal: number }) {
                 <div key={freightOption.id}>
                   <input
                     type="radio"
-                    id={freightOption.id}
+                    id={freightOption.id.toString()}
                     className="radio"
                     checked={
                       selectedFreightValue === parseFloat(freightOption.price)
@@ -84,7 +87,7 @@ export default function ResumeCart({ subTotal }: { subTotal: number }) {
                       handleOptionChange(parseFloat(freightOption.price))
                     }
                   />
-                  <label htmlFor={freightOption.id}>
+                  <label htmlFor={freightOption.id.toString()}>
                     {freightOption.name} - {freightOption.price}
                   </label>
                 </div>
