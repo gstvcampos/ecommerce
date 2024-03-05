@@ -28,9 +28,9 @@ export default function CartEntry({
   return (
     <>
       <div className="divider"></div>
-      <div className="flex flex-wrap justify-between gap-3">
+      <div className="flex flex-wrap justify-between gap-3 relative">
         <div className="flex gap-4">
-          <div className="relative h-32 w-24">
+          <div className="relative h-40 w-40">
             <Image
               src={product.imageUrls[0]}
               alt={product.name}
@@ -42,29 +42,28 @@ export default function CartEntry({
             <Link href={'/products/' + product.id} className="font-bold">
               {product.name}
             </Link>
-            <div className="flex items-center py-2 gap-2">
-              <div>{formatPrice(product.price)}</div>
-              <div className="my-1 flex items-center gap-2">
-                <select
-                  className="select-bordered select select-sm max-w-16"
-                  defaultValue={quantity}
-                  onChange={(e) => {
-                    const newQuantity = parseInt(e.currentTarget.value)
-                    startTransition(async () => {
-                      await setProductQuantity(product.id, newQuantity)
-                    })
-                  }}
-                >
-                  <option value={0}>0 (Remover)</option>
-                  {quantityOptions}
-                </select>
-              </div>
+            <div className="flex items-center py-6 gap-2">
+              <select
+                className="select-bordered select select-sm max-w-16"
+                defaultValue={quantity}
+                onChange={(e) => {
+                  const newQuantity = parseInt(e.currentTarget.value)
+                  startTransition(async () => {
+                    await setProductQuantity(product.id, newQuantity)
+                  })
+                }}
+              >
+                <option value={0}>0 (Remover)</option>
+                {quantityOptions}
+              </select>
+              <p>
+                {formatPrice(product.price * quantity)}
+                {isPending && (
+                  <span className="loading loading-spinner loading-sm" />
+                )}
+              </p>
             </div>
           </div>
-        </div>
-        <div>
-          {formatPrice(product.price * quantity)}
-          {isPending && <span className="loading loading-spinner loading-sm" />}
         </div>
       </div>
     </>
