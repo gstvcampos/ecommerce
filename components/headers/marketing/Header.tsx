@@ -34,7 +34,7 @@ export default function Header() {
         <div className="md:hidden pb-2 px-4">
           <SearchInput />
         </div>
-        <div className="max-w-screen-xl mx-auto">
+        <div className="max-w-screen-xl mx-auto px-6">
           <div className="hidden md:inline-flex items-center mx-auto min-h-11">
             <NavItems />
           </div>

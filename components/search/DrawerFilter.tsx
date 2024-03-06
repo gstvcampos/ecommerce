@@ -29,9 +29,13 @@ export default function DrawerFilter({ searchParams }: DrawerFilterProps) {
         <ul className="menu p-4 w-80 min-h-full bg-base-200">
           <div className="flex justify-between items-center py-4">
             <h3>FILTRAR POR</h3>
-            <button>
+            <label
+              htmlFor="my-drawer"
+              aria-label="close sidebar"
+              className="cursor-pointer"
+            >
               <CloseIcon />
-            </button>
+            </label>
           </div>
           <li>
             <details open>
