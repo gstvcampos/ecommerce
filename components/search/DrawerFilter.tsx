@@ -8,9 +8,6 @@ type DrawerFilterProps = {
 export default function DrawerFilter({ searchParams }: DrawerFilterProps) {
   const sizeVariants = ['P', 'M', 'G', 'GG']
   const categoryVariants = ['CAMISETA', 'REGATA', 'OFICIAL', 'TREINO']
-  const selectSize = (searchParams?.size || '') as string
-  const selectCategory = (searchParams?.category || '') as string
-  const selectSort = (searchParams?.sort || '') as string
 
   return (
     <div className="drawer">
@@ -44,7 +41,7 @@ export default function DrawerFilter({ searchParams }: DrawerFilterProps) {
                 {sizeVariants.map((size, idx) => (
                   <li key={idx}>
                     <Link
-                      href={`?${new URLSearchParams({ sort: selectSort, category: selectCategory, size })}`}
+                      href={`?${new URLSearchParams({ ...searchParams, size })}`}
                     >
                       {size}
                     </Link>
@@ -60,7 +57,7 @@ export default function DrawerFilter({ searchParams }: DrawerFilterProps) {
                 {categoryVariants.map((category, idx) => (
                   <li key={idx}>
                     <Link
-                      href={`?${new URLSearchParams({ sort: selectSort, category, size: selectSize })}`}
+                      href={`?${new URLSearchParams({ ...searchParams, category })}`}
                     >
                       {category}
                     </Link>

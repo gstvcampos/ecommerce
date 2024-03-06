@@ -6,8 +6,6 @@ type DropdownSortProps = {
 
 export default function DropdownSort({ searchParams }: DropdownSortProps) {
   const sortVariants = ['ASC', 'DESC', 'PROMO', 'POPULAR']
-  const selectSize = (searchParams?.size || '') as string
-  const selectCategory = (searchParams?.category || '') as string
 
   return (
     <div className="dropdown dropdown-end">
@@ -20,9 +18,7 @@ export default function DropdownSort({ searchParams }: DropdownSortProps) {
       >
         {sortVariants.map((sort, idx) => (
           <li key={idx}>
-            <Link
-              href={`?${new URLSearchParams({ sort, category: selectCategory, size: selectSize })}`}
-            >
+            <Link href={`?${new URLSearchParams({ ...searchParams, sort })}`}>
               {sort}
             </Link>
           </li>
