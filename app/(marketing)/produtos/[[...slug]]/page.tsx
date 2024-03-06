@@ -1,5 +1,6 @@
 import Breadcrumbs from '@/components/Breadcrumbs'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
+import PaginationBar from '@/components/PaginationBar'
 import ProductCard from '@/components/ProductCard'
 import DrawerFilter from '@/components/search/DrawerFilter'
 import DropdownSort from '@/components/search/DropdownSort'
@@ -16,7 +17,12 @@ export default async function CategoryPage({
   params: { slug },
   searchParams,
 }: CategoryPageProps) {
-  const products = await getProducts(slug[0], slug[1])
+  const pageSize = 3
+  const skip = Number(searchParams?.page || 1 - 1) * pageSize
+  const products = await getProducts(slug[0], slug[1], pageSize, skip)
+
+  const totalItemsCount = await getProducts(slug[0], slug[1])
+  const totalPages = Math.ceil(totalItemsCount.length / pageSize)
 
   return (
     <>
@@ -41,6 +47,7 @@ export default async function CategoryPage({
             </li>
           ))}
         </ul>
+        <PaginationBar totalPages={totalPages} searchParams={searchParams} />
       </MaxWidthWrapper>
     </>
   )

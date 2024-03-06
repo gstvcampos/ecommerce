@@ -3,12 +3,19 @@ import { cache } from 'react'
 import { prisma } from './prisma'
 
 export const getProducts = cache(
-  async (department: string, category?: string) => {
+  async (
+    department: string,
+    category?: string,
+    pageSize?: number,
+    skip?: number,
+  ) => {
     const products = await prisma.product.findMany({
       where: {
         department,
         category,
       },
+      take: pageSize,
+      skip,
     })
     if (!products) notFound()
     return products
