@@ -1,6 +1,7 @@
-import MaxWidthWrapper from '@/components/MaxWidthWrapper'
-import Link from 'next/link'
 import { signOut } from '@/auth'
+import MaxWidthWrapper from '@/components/MaxWidthWrapper'
+import { revalidatePath } from 'next/cache'
+import Link from 'next/link'
 
 export default async function MinhaConta() {
   return (
@@ -18,6 +19,7 @@ export default async function MinhaConta() {
         action={async () => {
           'use server'
           await signOut()
+          revalidatePath('/')
         }}
         className="inline-flex items-center"
       >
