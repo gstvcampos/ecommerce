@@ -6,14 +6,13 @@ import { useEffect, useState } from 'react'
 
 export default function Banner({ slides }: { slides: string[] }) {
   const [curr, setCurr] = useState(0)
-
   const next = () => setCurr((curr + 1) % slides.length)
   const prev = () => setCurr(curr - 1 < 0 ? slides.length - 1 : curr - 1)
 
   useEffect(() => {
     const interval = setInterval(next, 5000)
     return () => clearInterval(interval)
-  }, [curr])
+  })
 
   return (
     <div>

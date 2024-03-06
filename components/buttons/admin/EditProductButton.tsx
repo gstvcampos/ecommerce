@@ -12,7 +12,7 @@ export default function EditProductButton({
 
   const handleDeleteClick = () => {
     startTransition(() => {
-      // action aqui
+      console.log(productId)
     })
   }
 
