@@ -24,11 +24,11 @@ export default function ProductCard({ product }: ProductCardProps) {
           />
         </div>
       </div>
-      <div className="flex flex-col items-end p-2">
-        <h2 className="font-bold line-clamp-2 min-h-[2.5rem]">
+      <div className="card-body p-4">
+        <h2 className="font-bold text-base line-clamp-2 min-h-[2.5rem]">
           {product.name}
         </h2>{' '}
-        <p className="font-bold text-lg">{formatPrice(product.price)}</p>
+        <p className="font-bold self-end">{formatPrice(product.price)}</p>
       </div>
     </Link>
   )
