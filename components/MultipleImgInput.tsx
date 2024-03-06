@@ -47,7 +47,7 @@ export default function MultipleImgInput({
         {error}
       </span>
       <div className="flex items-center justify-center w-full">
-        <label className="flex cursor-pointer flex-col w-full h-32 border-2 rounded-md border-dashed hover:bg-accent">
+        <label className="flex cursor-pointer flex-col w-full h-32 border-2 rounded-md border-dashed hover:bg-base-200">
           <div className="flex flex-col items-center pt-6">
             <ImagePlaceholderIcon />
             <p className="text-sm tracking-wider">Selecione suas imagens</p>
@@ -61,7 +61,7 @@ export default function MultipleImgInput({
           />
         </label>
       </div>
-      <div className="flex flex-wrap gap-4 py-4">
+      <div className="flex flex-wrap gap-4">
         {files.map((file, key) => {
           return (
             <div key={key} className="avatar indicator">

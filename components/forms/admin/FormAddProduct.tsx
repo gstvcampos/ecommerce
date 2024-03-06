@@ -86,7 +86,10 @@ export default function FormAddProduct() {
         error={errors.price}
       />
       <MultipleImgInput getFiles={getFiles} />
-      <select className="select w-full max-w-xs" {...register('department')}>
+      <select
+        className="select select-bordered w-full mt-3"
+        {...register('department')}
+      >
         <option value="">Escolha o departamento do produto</option>
         <option value="masculino">Masculino</option>
         <option value="feminino">Feminino</option>
@@ -96,7 +99,10 @@ export default function FormAddProduct() {
       {errors.department && (
         <span className="text-red-500">{errors.department.message}</span>
       )}
-      <select className="select w-full max-w-xs" {...register('category')}>
+      <select
+        className="select select-bordered w-full mt-3"
+        {...register('category')}
+      >
         <option value="">Escolha a categoria do produto</option>
         <option value="bermuda">Bermuda</option>
         <option value="camisa">Camisa</option>
@@ -107,7 +113,7 @@ export default function FormAddProduct() {
       </select>
       <FormError message={error} />
       <FormSuccess message={success} />
-      <button className="btn btn-block" type="submit" disabled={isPending}>
+      <button className="btn btn-block mt-3" type="submit" disabled={isPending}>
         Add Product
       </button>
     </form>
