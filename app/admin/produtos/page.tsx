@@ -1,6 +1,4 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
-import DeleteProductButton from '@/components/buttons/admin/DeleteProductButton'
-import EditProductButton from '@/components/buttons/admin/EditProductButton'
 import { prisma } from '@/db/prisma'
 import Link from 'next/link'
 
@@ -32,12 +30,6 @@ export default async function AdminProducts() {
                 <td>{product.department}</td>
                 <td>{product.category}</td>
                 <td>{product.price}</td>
-                <td>
-                  <EditProductButton productId={product.id} />
-                </td>
-                <td>
-                  <DeleteProductButton productId={product.id} />
-                </td>
               </tr>
             ))}
           </tbody>
