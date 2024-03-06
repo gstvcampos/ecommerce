@@ -10,13 +10,7 @@ export default function AdminHeader() {
 
         <ul className="flex items-center space-x-4">
           <li>
-            <Link href="/admin/pedidos">Pedidos</Link>
-          </li>
-          <li>
             <Link href="/admin/produtos">Produtos</Link>
-          </li>
-          <li>
-            <Link href="/admin/clientes">Clientes</Link>
           </li>
         </ul>
       </nav>

@@ -23,7 +23,6 @@ export default async function AdminProducts() {
               <th>Departamento</th>
               <th>Categoria</th>
               <th>Preço</th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
