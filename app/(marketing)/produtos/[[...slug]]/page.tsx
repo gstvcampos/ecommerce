@@ -9,20 +9,34 @@ interface CategoryPageProps {
   params: {
     slug: string[]
   }
+  searchParams?: { [key: string]: string | string[] | undefined }
 }
 
-export default async function CategoryPage({ params }: CategoryPageProps) {
-  const products = await getProducts(params.slug[0], params.slug[1])
+export default async function CategoryPage({
+  params: { slug },
+  searchParams,
+}: CategoryPageProps) {
+  const sortParams = searchParams?.sort
+  const selectSize = searchParams?.size
+  const selectCategory = searchParams?.category
+  const products = await getProducts(slug[0], slug[1])
 
   return (
     <>
       <MaxWidthWrapper>
-        <Breadcrumbs items={params.slug} />
+        <Breadcrumbs items={slug} />
         <div className="flex justify-between items-center">
-          <h2 className="uppercase">{params.slug[0]}</h2>
+          <h2 className="uppercase">{slug[0]}</h2>
           <div className="flex items-center">
-            <DrawerSearchFilter />
-            <DropdownSearchSort />
+            <DrawerSearchFilter
+              selectCategory={selectCategory}
+              selectSize={selectSize}
+              selectSort={sortParams}
+            />
+            <DropdownSearchSort
+              selectCategory={selectCategory}
+              selectSize={selectSize}
+            />
           </div>
         </div>
       </MaxWidthWrapper>
