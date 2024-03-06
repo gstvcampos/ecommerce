@@ -24,19 +24,28 @@ export default async function CategoryPage({
   const products = await getSearchProducts(search)
 
   return (
-    <MaxWidthWrapper>
-      <div className="flex py-4 justify-between">
-        <h2>Você pesquisou por: {search}</h2>
-        <div className="flex items-center">
-          <DrawerSearchFilter />
-          <DropdownSearchSort />
+    <>
+      <MaxWidthWrapper>
+        <div className="flex py-4 justify-between">
+          <h2>Você pesquisou por: {search}</h2>
+          <div className="flex items-center">
+            <DrawerSearchFilter />
+            <DropdownSearchSort />
+          </div>
         </div>
-      </div>
-      <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
-    </MaxWidthWrapper>
+      </MaxWidthWrapper>
+      <MaxWidthWrapper className="pb-20 pt-4">
+        <ul className="flex flex-wrap gap-4 md:gap-6 w-full">
+          {products.map((product) => (
+            <li
+              key={product.id}
+              className="w-1/3 md:w-1/4 flex-grow shrink-0 max-w-96"
+            >
+              <ProductCard product={product} />
+            </li>
+          ))}
+        </ul>
+      </MaxWidthWrapper>
+    </>
   )
 }
