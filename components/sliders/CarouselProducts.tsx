@@ -77,12 +77,15 @@ export default function CarouselProducts({
         ref={carouselRef}
       >
         {products.map((product) => (
-          <div className="carousel-item" key={product.id}>
+          <div
+            className="w-1/2 sm:w-1/3 md:w-1/4 flex-grow shrink-0 py-2"
+            key={product.id}
+          >
             <ProductCard product={product} />
           </div>
         ))}
       </div>
-      <div>
+      <div className="hidden md:block">
         <button
           className="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white rounded-full p-1 shadow-lg"
           onClick={handlePrev}
