@@ -44,7 +44,7 @@ export const CarouselGalleryWidget = ({
     if (carousel) {
       carousel.scrollLeft += carousel.offsetWidth
     }
-    setTimeout(() => setMoving(false), 600)
+    setTimeout(() => setMoving(false), 400)
   }
 
   const handlePrev = () => {
@@ -54,7 +54,7 @@ export const CarouselGalleryWidget = ({
     if (carousel) {
       carousel.scrollLeft -= carousel.offsetWidth
     }
-    setTimeout(() => setMoving(false), 600)
+    setTimeout(() => setMoving(false), 400)
   }
 
   const handleThumbnailClick = (i: number) => {
@@ -70,7 +70,7 @@ export const CarouselGalleryWidget = ({
 
       carousel.scrollLeft = scrollLeft
     }
-    setTimeout(() => setMoving(false), 600)
+    setTimeout(() => setMoving(false), 400)
   }
 
   return (

@@ -25,16 +25,17 @@ export default function OptionsFreightSelect({
         const price = parseFloat(freightOption.price)
         return (
           freightOption.price && (
-            <div key={freightOption.id}>
+            <div key={freightOption.id} className="flex items-center gap-2">
               <input
                 type="radio"
                 id={freightOption.id.toString()}
-                className="radio"
+                className="radio h-4 w-4"
                 checked={selectedFreight === price}
                 onChange={() => handleOptionChange(price)}
               />
               <label htmlFor={freightOption.id.toString()}>
-                {freightOption.name} - {freightOption.price}
+                <span className="lowercase">{freightOption.name} - </span>
+                <span>{freightOption.price}</span>
               </label>
             </div>
           )

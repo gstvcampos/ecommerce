@@ -48,7 +48,7 @@ export default function CarouselProducts({
     if (carousel) {
       carousel.scrollLeft += carousel.offsetWidth
     }
-    setTimeout(() => setMoving(false), 600)
+    setTimeout(() => setMoving(false), 400)
   }
 
   const handlePrev = () => {
@@ -58,7 +58,7 @@ export default function CarouselProducts({
     if (carousel) {
       carousel.scrollLeft -= carousel.offsetWidth
     }
-    setTimeout(() => setMoving(false), 600)
+    setTimeout(() => setMoving(false), 400)
   }
 
   return (
