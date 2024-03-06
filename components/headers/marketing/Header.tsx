@@ -1,6 +1,6 @@
 import Drawer from '@/components/Drawer'
+import { MenuIcon } from '@/components/icons/MenuIcon'
 import Link from 'next/link'
-import { MenuIcon } from '../../../icons/MenuIcon'
 import NavButtons from './NavButtons'
 import NavItems from './NavItems'
 import SearchInput from './SearchInput'

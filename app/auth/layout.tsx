@@ -1,4 +1,4 @@
-import HeaderAuth from '@/components/layout/headers/auth/HeaderAuth'
+import HeaderAuth from '@/components/headers/auth/HeaderAuth'
 
 export default async function AuthLayout({
   children,

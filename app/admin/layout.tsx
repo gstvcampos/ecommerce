@@ -1,4 +1,4 @@
-import AdminHeader from '@/components/layout/headers/admin/AdminHeader'
+import AdminHeader from '@/components/headers/admin/AdminHeader'
 
 export default async function AdminLayout({
   children,
