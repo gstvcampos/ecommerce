@@ -15,20 +15,26 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const products = await getProducts(params.slug[0], params.slug[1])
 
   return (
-    <MaxWidthWrapper className="pb-20">
-      <Breadcrumbs items={params.slug} />
-      <div className="flex justify-between items-center">
-        <h2 className="uppercase">{params.slug[0]}</h2>
-        <div className="flex items-center">
-          <DrawerSearchFilter />
-          <DropdownSearchSort />
+    <>
+      <MaxWidthWrapper>
+        <Breadcrumbs items={params.slug} />
+        <div className="flex justify-between items-center">
+          <h2 className="uppercase">{params.slug[0]}</h2>
+          <div className="flex items-center">
+            <DrawerSearchFilter />
+            <DropdownSearchSort />
+          </div>
         </div>
-      </div>
-      <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
-    </MaxWidthWrapper>
+      </MaxWidthWrapper>
+      <MaxWidthWrapper className="pb-20 pt-4">
+        <ul className="flex flex-wrap gap-4 md:gap-6 w-full">
+          {products.map((product) => (
+            <li key={product.id} className="w-1/3 md:w-1/4 flex-grow shrink-0">
+              <ProductCard product={product} />
+            </li>
+          ))}
+        </ul>
+      </MaxWidthWrapper>
+    </>
   )
 }
