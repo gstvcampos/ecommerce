@@ -4,6 +4,7 @@ import { PrismaAdapter } from '@auth/prisma-adapter'
 import { UserRole } from '@prisma/client'
 import NextAuth, { DefaultSession } from 'next-auth'
 import authConfig from './auth.config'
+import { mergeAnonymousCartIntoUserCart } from './db/cart'
 
 declare module 'next-auth' {
   interface Session {
@@ -29,6 +30,9 @@ export const {
         where: { id: user.id },
         data: { emailVerified: new Date() },
       })
+    },
+    async signIn({ user }) {
+      await mergeAnonymousCartIntoUserCart(user.id!)
     },
   },
   callbacks: {
