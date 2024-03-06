@@ -69,7 +69,7 @@ export default function CarouselProducts({
         <div className="flex-grow border-b-[1px]"></div>
       </div>
       <div
-        className="carousel cursor-grab gap-4 max-w-full"
+        className="carousel cursor-grab max-w-full"
         onMouseDown={handleMouseDown}
         onMouseLeave={handleMouseLeave}
         onMouseUp={handleMouseUp}
@@ -78,7 +78,7 @@ export default function CarouselProducts({
       >
         {products.map((product) => (
           <div
-            className="w-1/2 sm:w-1/3 md:w-1/4 flex-grow shrink-0 py-2"
+            className="w-1/2 lg:w-1/4 flex-grow shrink-0 p-2"
             key={product.id}
           >
             <ProductCard product={product} />
