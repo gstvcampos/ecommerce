@@ -16,11 +16,8 @@ export default async function CategoryPage({
   searchParams,
 }: SearchPageProps) {
   const sortParams = searchParams?.sort
-  const sizeParams = searchParams?.size
-  const categoryParams = searchParams?.category
-  console.log(sortParams)
-  console.log(sizeParams)
-  console.log(categoryParams)
+  const selectSize = searchParams?.size
+  const selectCategory = searchParams?.category
   const products = await getSearchProducts(search)
 
   return (
@@ -29,8 +26,15 @@ export default async function CategoryPage({
         <div className="flex py-4 justify-between">
           <h2>Você pesquisou por: {search}</h2>
           <div className="flex items-center">
-            <DrawerSearchFilter />
-            <DropdownSearchSort />
+            <DrawerSearchFilter
+              selectCategory={selectCategory}
+              selectSize={selectSize}
+              selectSort={sortParams}
+            />
+            <DropdownSearchSort
+              selectCategory={selectCategory}
+              selectSize={selectSize}
+            />
           </div>
         </div>
       </MaxWidthWrapper>

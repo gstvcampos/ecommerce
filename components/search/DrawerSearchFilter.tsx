@@ -1,7 +1,11 @@
 import Link from 'next/link'
 import { CloseIcon } from '../icons/CloseIcon'
 
-export default function DrawerSearchFilter() {
+export default function DrawerSearchFilter({
+  selectCategory,
+  selectSize,
+  selectSort,
+}) {
   const sizeVariants = ['P', 'M', 'G', 'GG']
   const categoryVariants = ['CAMISETA', 'REGATA', 'OFICIAL', 'TREINO']
 
@@ -32,7 +36,9 @@ export default function DrawerSearchFilter() {
               <ul>
                 {sizeVariants.map((size, idx) => (
                   <li key={idx}>
-                    <Link href={`?${new URLSearchParams({ size })}`}>
+                    <Link
+                      href={`?${new URLSearchParams({ sort: selectSort, category: selectCategory, size })}`}
+                    >
                       {size}
                     </Link>
                   </li>
@@ -46,7 +52,9 @@ export default function DrawerSearchFilter() {
               <ul>
                 {categoryVariants.map((category, idx) => (
                   <li key={idx}>
-                    <Link href={`?${new URLSearchParams({ category })}`}>
+                    <Link
+                      href={`?${new URLSearchParams({ sort: selectSort, category, size: selectSize })}`}
+                    >
                       {category}
                     </Link>
                   </li>
