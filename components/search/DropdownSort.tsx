@@ -6,8 +6,8 @@ type DropdownSortProps = {
 
 export default function DropdownSort({ searchParams }: DropdownSortProps) {
   const sortVariants = ['ASC', 'DESC', 'PROMO', 'POPULAR']
-  const selectSize = searchParams?.size
-  const selectCategory = searchParams?.category || ''
+  const selectSize = (searchParams?.size || '') as string
+  const selectCategory = (searchParams?.category || '') as string
 
   return (
     <div className="dropdown dropdown-end">
