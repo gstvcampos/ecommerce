@@ -1,7 +1,7 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import ProductCard from '@/components/ProductCard'
-import DrawerSearchFilter from '@/components/search/DrawerSearchFilter'
-import DropdownSearchSort from '@/components/search/DropdownSearchSort'
+import DrawerFilter from '@/components/search/DrawerFilter'
+import DropdownSort from '@/components/search/DropdownSort'
 import { getSearchProducts } from '@/db/products'
 
 interface SearchPageProps {
@@ -15,9 +15,6 @@ export default async function CategoryPage({
   params: { search },
   searchParams,
 }: SearchPageProps) {
-  const sortParams = searchParams?.sort
-  const selectSize = searchParams?.size
-  const selectCategory = searchParams?.category
   const products = await getSearchProducts(search)
 
   return (
@@ -26,15 +23,8 @@ export default async function CategoryPage({
         <div className="flex py-4 justify-between">
           <h2>Você pesquisou por: {search}</h2>
           <div className="flex items-center">
-            <DrawerSearchFilter
-              selectCategory={selectCategory}
-              selectSize={selectSize}
-              selectSort={sortParams}
-            />
-            <DropdownSearchSort
-              selectCategory={selectCategory}
-              selectSize={selectSize}
-            />
+            <DrawerFilter searchParams={searchParams} />
+            <DropdownSort searchParams={searchParams} />
           </div>
         </div>
       </MaxWidthWrapper>

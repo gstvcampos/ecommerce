@@ -1,8 +1,8 @@
 import Breadcrumbs from '@/components/Breadcrumbs'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import ProductCard from '@/components/ProductCard'
-import DrawerSearchFilter from '@/components/search/DrawerSearchFilter'
-import DropdownSearchSort from '@/components/search/DropdownSearchSort'
+import DrawerFilter from '@/components/search/DrawerFilter'
+import DropdownSort from '@/components/search/DropdownSort'
 import { getProducts } from '@/db/products'
 
 interface CategoryPageProps {
@@ -16,9 +16,6 @@ export default async function CategoryPage({
   params: { slug },
   searchParams,
 }: CategoryPageProps) {
-  const sortParams = searchParams?.sort
-  const selectSize = searchParams?.size
-  const selectCategory = searchParams?.category
   const products = await getProducts(slug[0], slug[1])
 
   return (
@@ -28,15 +25,8 @@ export default async function CategoryPage({
         <div className="flex justify-between items-center">
           <h2 className="uppercase">{slug[0]}</h2>
           <div className="flex items-center">
-            <DrawerSearchFilter
-              selectCategory={selectCategory}
-              selectSize={selectSize}
-              selectSort={sortParams}
-            />
-            <DropdownSearchSort
-              selectCategory={selectCategory}
-              selectSize={selectSize}
-            />
+            <DrawerFilter searchParams={searchParams} />
+            <DropdownSort searchParams={searchParams} />
           </div>
         </div>
       </MaxWidthWrapper>

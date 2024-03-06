@@ -1,13 +1,16 @@
 import Link from 'next/link'
 import { CloseIcon } from '../icons/CloseIcon'
 
-export default function DrawerSearchFilter({
-  selectCategory,
-  selectSize,
-  selectSort,
-}) {
+type DrawerFilterProps = {
+  searchParams?: { [key: string]: string | string[] | undefined }
+}
+
+export default function DrawerFilter({ searchParams }: DrawerFilterProps) {
   const sizeVariants = ['P', 'M', 'G', 'GG']
   const categoryVariants = ['CAMISETA', 'REGATA', 'OFICIAL', 'TREINO']
+  const selectSize = searchParams?.size || ''
+  const selectCategory = searchParams?.category || ''
+  const selectSort = searchParams?.sort || ''
 
   return (
     <div className="drawer">

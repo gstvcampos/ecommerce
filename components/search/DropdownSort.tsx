@@ -1,7 +1,13 @@
 import Link from 'next/link'
 
-export default function DropdownSearchSort({ selectCategory, selectSize }) {
+type DropdownSortProps = {
+  searchParams?: { [key: string]: string | string[] | undefined }
+}
+
+export default function DropdownSort({ searchParams }: DropdownSortProps) {
   const sortVariants = ['ASC', 'DESC', 'PROMO', 'POPULAR']
+  const selectSize = searchParams?.size
+  const selectCategory = searchParams?.category || ''
 
   return (
     <div className="dropdown dropdown-end">
@@ -15,7 +21,7 @@ export default function DropdownSearchSort({ selectCategory, selectSize }) {
         {sortVariants.map((sort, idx) => (
           <li key={idx}>
             <Link
-              href={`?${new URLSearchParams({ sort, category: selectCategory, selectSize })}`}
+              href={`?${new URLSearchParams({ sort, category: selectCategory, size: selectSize })}`}
             >
               {sort}
             </Link>
