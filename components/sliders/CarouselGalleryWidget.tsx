@@ -13,7 +13,7 @@ export const CarouselGalleryWidget = ({
   const [scrollLeft, setScrollLeft] = useState(0)
   const [moving, setMoving] = useState(false)
   const carouselRef = useRef<HTMLDivElement>(null)
-  const allItemsRefs = {}
+  const allItemsRefs: { [key: number]: HTMLDivElement | null } = {}
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     setGrabbing(true)
