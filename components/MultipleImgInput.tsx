@@ -61,11 +61,12 @@ export default function MultipleImgInput({
           />
         </label>
       </div>
-      <div className="flex flex-wrap gap-4">
+      <div className="flex flex-wrap gap-4 py-4">
         {files.map((file, key) => {
           return (
             <div key={key} className="avatar indicator">
               <button
+                type="button"
                 onClick={() => {
                   removeImage(file.name)
                 }}
