@@ -2,11 +2,23 @@ import { notFound } from 'next/navigation'
 import { cache } from 'react'
 import { prisma } from './prisma'
 
+export const countProducts = cache(
+  async (department: string, category?: string) => {
+    const count = await prisma.product.count({
+      where: {
+        department,
+        category,
+      },
+    })
+    return count
+  },
+)
+
 export const getProducts = cache(
   async (
     department: string,
     category?: string,
-    pageSize?: number,
+    itemsPeerPage?: number,
     skip?: number,
   ) => {
     const products = await prisma.product.findMany({
@@ -14,7 +26,7 @@ export const getProducts = cache(
         department,
         category,
       },
-      take: pageSize,
+      take: itemsPeerPage,
       skip,
     })
     if (!products) notFound()

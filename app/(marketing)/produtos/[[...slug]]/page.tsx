@@ -4,7 +4,7 @@ import PaginationBar from '@/components/PaginationBar'
 import ProductCard from '@/components/ProductCard'
 import DrawerFilter from '@/components/search/DrawerFilter'
 import DropdownSort from '@/components/search/DropdownSort'
-import { getProducts } from '@/db/products'
+import { countProducts, getProducts } from '@/db/products'
 
 interface CategoryPageProps {
   params: {
@@ -18,12 +18,13 @@ export default async function CategoryPage({
   searchParams,
 }: CategoryPageProps) {
   const page = Number(searchParams?.page) || 1
-  const pageSize = 3
-  const skip = Number(page - 1) * pageSize
-  const products = await getProducts(slug[0], slug[1], pageSize, skip)
+  const itemsPeerPage = 3
+  const skip = Number(page - 1) * itemsPeerPage
+  const [department, category] = slug
 
-  const totalItemsCount = await getProducts(slug[0], slug[1])
-  const totalPages = Math.ceil(totalItemsCount.length / pageSize)
+  const products = await getProducts(department, category, itemsPeerPage, skip)
+  const totalItemsCount = await countProducts(department, category)
+  const totalPages = Math.ceil(totalItemsCount / itemsPeerPage)
 
   return (
     <>
