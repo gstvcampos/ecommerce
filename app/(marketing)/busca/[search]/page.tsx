@@ -1,8 +1,10 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import ProductCard from '@/components/ProductCard'
+import PaginationBar from '@/components/pagination/PaginationBar'
 import DrawerFilter from '@/components/search/DrawerFilter'
 import DropdownSort from '@/components/search/DropdownSort'
-import { getSearchProducts } from '@/db/products'
+import { countSearchProducts, getSearchProducts } from '@/db/products'
+import { calcPagination } from '@/lib/ultis'
 
 interface SearchPageProps {
   params: {
@@ -15,7 +17,10 @@ export default async function CategoryPage({
   params: { search },
   searchParams,
 }: SearchPageProps) {
-  const products = await getSearchProducts(search)
+  const page = Number(searchParams?.page) || 1
+  const countItems = await countSearchProducts(search)
+  const { totalPages, itemsPeerPage, skip } = calcPagination(page, countItems)
+  const products = await getSearchProducts(search, itemsPeerPage, skip)
 
   return (
     <>
@@ -39,6 +44,7 @@ export default async function CategoryPage({
             </li>
           ))}
         </ul>
+        <PaginationBar totalPages={totalPages} searchParams={searchParams} />
       </MaxWidthWrapper>
     </>
   )

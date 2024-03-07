@@ -34,8 +34,8 @@ export const getProducts = cache(
   },
 )
 
-export const getSearchProducts = cache(async (search: string) => {
-  const products = await prisma.product.findMany({
+export const countSearchProducts = cache(async (search: string) => {
+  const count = await prisma.product.count({
     where: {
       OR: [
         { name: { contains: search, mode: 'insensitive' } },
@@ -44,9 +44,26 @@ export const getSearchProducts = cache(async (search: string) => {
       ],
     },
   })
-  if (!products) notFound()
-  return products
+  return count
 })
+
+export const getSearchProducts = cache(
+  async (search: string, itemsPeerPage?: number, skip?: number) => {
+    const products = await prisma.product.findMany({
+      where: {
+        OR: [
+          { name: { contains: search, mode: 'insensitive' } },
+          { department: { contains: search, mode: 'insensitive' } },
+          { category: { contains: search, mode: 'insensitive' } },
+        ],
+      },
+      take: itemsPeerPage,
+      skip,
+    })
+    if (!products) notFound()
+    return products
+  },
+)
 
 export const getProductById = cache(async (id: string) => {
   const product = await prisma.product.findUnique({ where: { id } })
