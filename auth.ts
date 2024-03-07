@@ -2,17 +2,9 @@ import { prisma } from '@/db/prisma'
 import { getUserById } from '@/db/user'
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import { UserRole } from '@prisma/client'
-import NextAuth, { DefaultSession } from 'next-auth'
+import NextAuth from 'next-auth'
 import authConfig from './auth.config'
 import { mergeAnonymousCartIntoUserCart } from './db/cart'
-
-declare module 'next-auth' {
-  interface Session {
-    user: {
-      role: UserRole
-    } & DefaultSession['user']
-  }
-}
 
 export const {
   handlers: { GET, POST },
