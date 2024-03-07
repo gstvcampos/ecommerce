@@ -13,8 +13,6 @@ export default function PaginationBar({
   const currentPage = Number(searchParams?.page) || 1
   const maxPage = Math.min(totalPages, Math.max(currentPage + 2, 10))
   const minPage = Math.max(1, Math.min(currentPage - 5, totalPages - 9))
-  console.log('currentPage', currentPage)
-  console.log('totalPages', totalPages)
 
   const numberedPageItems: JSX.Element[] = []
 

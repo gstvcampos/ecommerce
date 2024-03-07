@@ -17,8 +17,9 @@ export default async function CategoryPage({
   params: { slug },
   searchParams,
 }: CategoryPageProps) {
+  const page = Number(searchParams?.page) || 1
   const pageSize = 3
-  const skip = Number(searchParams?.page || 1 - 1) * pageSize
+  const skip = Number(page - 1) * pageSize
   const products = await getProducts(slug[0], slug[1], pageSize, skip)
 
   const totalItemsCount = await getProducts(slug[0], slug[1])
