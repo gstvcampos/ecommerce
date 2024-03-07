@@ -1,10 +1,11 @@
 import Breadcrumbs from '@/components/Breadcrumbs'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
-import PaginationBar from '@/components/PaginationBar'
 import ProductCard from '@/components/ProductCard'
+import PaginationBar from '@/components/pagination/PaginationBar'
 import DrawerFilter from '@/components/search/DrawerFilter'
 import DropdownSort from '@/components/search/DropdownSort'
 import { countProducts, getProducts } from '@/db/products'
+import { calcPagination } from '@/lib/ultis'
 
 interface CategoryPageProps {
   params: {
@@ -18,13 +19,11 @@ export default async function CategoryPage({
   searchParams,
 }: CategoryPageProps) {
   const page = Number(searchParams?.page) || 1
-  const itemsPeerPage = 3
-  const skip = Number(page - 1) * itemsPeerPage
   const [department, category] = slug
 
+  const countItems = await countProducts(department, category)
+  const { skip, totalPages, itemsPeerPage } = calcPagination(page, countItems)
   const products = await getProducts(department, category, itemsPeerPage, skip)
-  const totalItemsCount = await countProducts(department, category)
-  const totalPages = Math.ceil(totalItemsCount / itemsPeerPage)
 
   return (
     <>
