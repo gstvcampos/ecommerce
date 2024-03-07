@@ -1,7 +1,7 @@
 import Breadcrumbs from '@/components/Breadcrumbs'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
+import PaginationBar from '@/components/PaginationBar'
 import ProductCard from '@/components/ProductCard'
-import PaginationBar from '@/components/pagination/PaginationBar'
 import DrawerFilter from '@/components/search/DrawerFilter'
 import DropdownSort from '@/components/search/DropdownSort'
 import { countProducts, getProducts } from '@/db/products'

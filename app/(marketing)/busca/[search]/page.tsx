@@ -1,6 +1,6 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
+import PaginationBar from '@/components/PaginationBar'
 import ProductCard from '@/components/ProductCard'
-import PaginationBar from '@/components/pagination/PaginationBar'
 import DrawerFilter from '@/components/search/DrawerFilter'
 import DropdownSort from '@/components/search/DropdownSort'
 import { countSearchProducts, getSearchProducts } from '@/db/products'
