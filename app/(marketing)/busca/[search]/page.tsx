@@ -33,13 +33,10 @@ export default async function CategoryPage({
           </div>
         </div>
       </MaxWidthWrapper>
-      <MaxWidthWrapper className="pb-20 pt-4">
-        <ul className="flex flex-wrap gap-4 md:gap-6 w-full">
+      <MaxWidthWrapper className="pt-4">
+        <ul className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 w-full">
           {products.map((product) => (
-            <li
-              key={product.id}
-              className="w-1/3 md:w-1/4 flex-grow shrink-0 max-w-96"
-            >
+            <li key={product.id}>
               <ProductCard product={product} />
             </li>
           ))}

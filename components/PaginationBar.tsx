@@ -31,5 +31,9 @@ export default function PaginationBar({
     )
   }
 
-  return <div className="join">{numberedPageItems}</div>
+  return (
+    <div className="w-full flex justify-center">
+      <div className="join py-12 self-center">{numberedPageItems}</div>
+    </div>
+  )
 }
