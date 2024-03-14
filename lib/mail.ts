@@ -8,7 +8,7 @@ export async function sendVerificationEmail(email: string, token: string) {
   const confirmLink = `${domain}/auth/verificacao?token=${token}`
 
   await resend.emails.send({
-    from: 'Acme <onboarding@resend.dev>',
+    from: 'HashtagTesst <hashtagtestt@gmail.com>',
     to: email,
     subject: 'Confirme seu email',
     html: `<p>Click <a href="${confirmLink}'>here</a> para verificar seu email</p>`,
@@ -19,7 +19,7 @@ export async function sendPasswordResetEmail(email: string, token: string) {
   const resetLink = `${domain}/auth/nova-senha?token=${token}`
 
   await resend.emails.send({
-    from: 'Acme <onboarding@resend.dev>',
+    from: 'HashtagTesst <hashtagtestt@gmail.com>',
     to: email,
     subject: 'Confirme seu email',
     html: `<p>Click <a href="${resetLink}'>here</a> criar nova senha</p>`,
