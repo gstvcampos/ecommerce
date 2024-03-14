@@ -1,6 +1,6 @@
 'use client'
 
-import { FacebookIcon } from '@/components/icons/FacebookIcon'
+import { GitHubIcon } from '@/components/icons/GitHubIcon'
 import { signIn } from 'next-auth/react'
 
 export default function FacebookButton() {
@@ -10,7 +10,7 @@ export default function FacebookButton() {
       type="submit"
       onClick={() => signIn('github')}
     >
-      <FacebookIcon />
+      <GitHubIcon />
       <span className="text-xs">Entrar com Github</span>
     </button>
   )
