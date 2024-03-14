@@ -10,6 +10,9 @@ export const privateRoutes = [
   '/minha-conta/enderecos/novo',
   '/minha-conta/meus-dados',
   '/pagamento',
+  '/admin',
+  '/admin/adicionar-produto',
+  '/admin/produtos',
 ]
 
 /**
