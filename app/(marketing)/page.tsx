@@ -4,11 +4,13 @@ import { prisma } from '@/db/prisma'
 
 export default async function Home() {
   const products = await prisma.product.findMany()
+  const firstEightProducts = products.slice(0, 8)
+
   return (
     <>
       <MaxWidthWrapper>
-        <CarouselProducts products={products} title="lançamentos" />
-        <CarouselProducts products={products} title="masculino" />
+        <CarouselProducts products={firstEightProducts} title="lançamentos" />
+        <CarouselProducts products={firstEightProducts} title="masculino" />
       </MaxWidthWrapper>
     </>
   )
