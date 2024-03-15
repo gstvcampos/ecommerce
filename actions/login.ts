@@ -38,9 +38,6 @@ export default async function loginAction(
     return { success: 'Confirmação de email enviada' }
   }
 
-  console.log('callbackUrl:', callbackUrl)
-  console.log('DEFAULT_LOGIN_REDIRECT:', DEFAULT_LOGIN_REDIRECT)
-
   try {
     await signIn('credentials', {
       email,

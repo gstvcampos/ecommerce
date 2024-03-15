@@ -18,7 +18,6 @@ export function CepInput({
     try {
       const cepValue = e.currentTarget.cep.value
       const address = await cep(cepValue)
-      console.log(address)
       getAddress(address)
     } catch (error) {
       setError('cep inválido')
