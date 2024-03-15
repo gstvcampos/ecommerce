@@ -11,7 +11,7 @@ export async function sendVerificationEmail(email: string, token: string) {
     from: 'HashtagTesst <onboarding@resend.dev>',
     to: email,
     subject: 'Confirme seu email',
-    html: `<p>Click <a href="${confirmLink}'>here</a> para verificar seu email</p>`,
+    html: `<p>Clique <a href="${confirmLink}">aqui</a> para verificar seu email</p>`,
   })
 }
 
@@ -22,6 +22,6 @@ export async function sendPasswordResetEmail(email: string, token: string) {
     from: 'HashtagTesst <onboarding@resend.dev>',
     to: email,
     subject: 'Cria nova senha',
-    html: `<p>Click <a href="${resetLink}'>here</a> criar nova senha</p>`,
+    html: `<p>Clique <a href="${resetLink}">here</a> criar nova senha</p>`,
   })
 }
