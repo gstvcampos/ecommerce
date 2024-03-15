@@ -21,7 +21,7 @@ export async function sendPasswordResetEmail(email: string, token: string) {
   await resend.emails.send({
     from: 'HashtagTesst <onboarding@resend.dev>',
     to: email,
-    subject: 'Confirme seu email',
+    subject: 'Cria nova senha',
     html: `<p>Click <a href="${resetLink}'>here</a> criar nova senha</p>`,
   })
 }
