@@ -1,8 +1,8 @@
-import { auth, signOut } from '@/auth'
+import { auth } from '@/auth'
+import LogoutButton from '@/components/buttons/marketing/LogoutButton'
 import { CartIcon } from '@/components/icons/CartIcon'
 import { UserIcon } from '@/components/icons/UserIcon'
 import { getCart } from '@/db/cart'
-import { revalidatePath } from 'next/cache'
 import Link from 'next/link'
 
 export default async function NavButtons() {
@@ -31,16 +31,7 @@ export default async function NavButtons() {
                 <Link href={'/minha-conta/pedidos'}>Pedidos</Link>
               </li>
               <li>
-                <form
-                  action={async () => {
-                    'use server'
-                    await signOut()
-                    revalidatePath('/')
-                  }}
-                  className="inline-flex items-center"
-                >
-                  <button type="submit">Sair</button>
-                </form>
+                <LogoutButton />
               </li>
             </>
           ) : (
