@@ -18,9 +18,18 @@ export default async function CategoryPage({
   searchParams,
 }: SearchPageProps) {
   const page = Number(searchParams?.page) || 1
+
+  let sort = searchParams?.sort
+  if (sort instanceof Array) {
+    sort = sort[0]
+  }
+  if (sort !== 'asc' && sort !== 'desc') {
+    sort = undefined
+  }
+
   const countItems = await countSearchProducts(search)
   const { totalPages, itemsPeerPage, skip } = calcPagination(page, countItems)
-  const products = await getSearchProducts(search, itemsPeerPage, skip)
+  const products = await getSearchProducts(search, itemsPeerPage, skip, sort)
 
   return (
     <>
