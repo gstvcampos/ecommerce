@@ -21,7 +21,7 @@ export default function DropdownSort({ searchParams }: DropdownSortProps) {
         {sortVariants.map((sort, idx) => (
           <li key={idx}>
             <Link
-              href={`?${new URLSearchParams({ ...searchParams, sort: sort.value })}`}
+              href={`?${new URLSearchParams({ ...searchParams, page: '1', sort: sort.value })}`}
             >
               {sort.label}
             </Link>
