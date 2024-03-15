@@ -37,14 +37,7 @@ export const newPasswordSchema = z
   .object({
     password: z
       .string()
-      .min(8, 'A senha precisa conter pelo menos 8 caracteres')
-      .regex(/(?=.*?[A-Z])/, 'É necessario pelo menos uma letra maiúscula')
-      .regex(/(?=.*?[a-z])/, 'É necessário pelo menos uma letra minúsculo')
-      .regex(/(?=.*?[0-9])/, 'É necessário pelo menos um número')
-      .regex(
-        /(?=.*?[#?!@$%^&*-])/,
-        'É necessário ao menos um caractere especial',
-      ),
+      .min(8, 'A senha precisa conter pelo menos 8 caracteres'),
     confirm: z.string().min(1, 'Confirmar senha é obrigatorio'),
   })
   .refine(({ password, confirm }) => password === confirm, {
