@@ -13,7 +13,7 @@ export function formatPrice(price: number) {
 }
 
 export function calcPagination(page: number, countItems: number) {
-  const itemsPeerPage = 4
+  const itemsPeerPage = 6
   const skip = (page - 1) * itemsPeerPage
   const totalPages = Math.ceil(countItems / itemsPeerPage)
   return { skip, totalPages, itemsPeerPage }
