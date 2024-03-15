@@ -23,7 +23,7 @@ export default function DrawerFilter({ searchParams }: DrawerFilterProps) {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu p-4 w-80 min-h-full bg-base-200">
+        <div className="menu p-4 w-80 min-h-full bg-base-200">
           <div className="flex justify-between items-center py-4">
             <h3>FILTRAR POR</h3>
             <label
@@ -34,7 +34,7 @@ export default function DrawerFilter({ searchParams }: DrawerFilterProps) {
               <CloseIcon />
             </label>
           </div>
-          <li>
+          <div>
             <details open>
               <summary>Tamanho</summary>
               <ul>
@@ -49,8 +49,8 @@ export default function DrawerFilter({ searchParams }: DrawerFilterProps) {
                 ))}
               </ul>
             </details>
-          </li>
-          <li>
+          </div>
+          <div>
             <details open>
               <summary>Estilo</summary>
               <ul>
@@ -65,8 +65,8 @@ export default function DrawerFilter({ searchParams }: DrawerFilterProps) {
                 ))}
               </ul>
             </details>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
     </div>
   )
