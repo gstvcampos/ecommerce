@@ -9,28 +9,53 @@ export default function Footer() {
       <div className="footer max-w-screen-xl mx-auto">
         <nav>
           <h6 className="footer-title">Informações</h6>
-          <a href="/" className="link link-hover">
+          <a
+            href="/"
+            className="link link-hover"
+            aria-label="politica de reembolso"
+          >
             Política de Reembolso
           </a>
-          <a href="/" className="link link-hover">
+          <a
+            href="/"
+            className="link link-hover"
+            aria-label="politica de entrega e envio
+          "
+          >
             Política de Entrega e Envio
           </a>
-          <a href="/" className="link link-hover">
+          <a
+            href="/"
+            className="link link-hover"
+            aria-label="politica de trocas e devolução"
+          >
             Política de Trocas e Devoluções
           </a>
-          <a href="/" className="link link-hover">
+          <a
+            href="/"
+            className="link link-hover"
+            aria-label="politica de privacidade"
+          >
             Política de privacidade
           </a>
-          <a href="/" className="link link-hover">
+          <a href="/" className="link link-hover" aria-label="termos de uso">
             Termos de uso
           </a>
         </nav>
         <nav>
           <h6 className="footer-title">Fale conosco</h6>
-          <a href="/" className="link link-hover">
+          <a
+            href="/"
+            className="link link-hover"
+            aria-label="telefone para atendimento ao cliente"
+          >
             (00)0000-0000 para Atendimento ao Cliente
           </a>
-          <a href="/" className="link link-hover">
+          <a
+            href="/"
+            className="link link-hover"
+            aria-label="email para atendimento do cliente"
+          >
             teste@loja.com.br
           </a>
         </nav>
