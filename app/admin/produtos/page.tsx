@@ -1,8 +1,20 @@
+import { auth } from '@/auth'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import { prisma } from '@/db/prisma'
 import Link from 'next/link'
 
 export default async function AdminProducts() {
+  const session = await auth()
+  if (session?.user.role !== 'ADMIN') {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+  }
+  console.log(session?.user.role)
+
   const products = await prisma.product.findMany()
 
   return (

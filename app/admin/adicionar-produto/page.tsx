@@ -1,5 +1,3 @@
-'use client'
-
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import FormAddProduct from '@/components/forms/admin/FormAddProduct'
 
