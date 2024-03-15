@@ -5,8 +5,10 @@ type DropdownSortProps = {
 }
 
 export default function DropdownSort({ searchParams }: DropdownSortProps) {
-  const sortVariants = ['MAIOR VALOR', 'MENOR VALOR']
-
+  const sortVariants = [
+    { label: 'Maior Valor', value: 'desc' },
+    { label: 'Menor Valor', value: 'asc' },
+  ]
   return (
     <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-outline m-1">
@@ -18,8 +20,10 @@ export default function DropdownSort({ searchParams }: DropdownSortProps) {
       >
         {sortVariants.map((sort, idx) => (
           <li key={idx}>
-            <Link href={`?${new URLSearchParams({ ...searchParams, sort })}`}>
-              {sort}
+            <Link
+              href={`?${new URLSearchParams({ ...searchParams, sort: sort.value })}`}
+            >
+              {sort.label}
             </Link>
           </li>
         ))}

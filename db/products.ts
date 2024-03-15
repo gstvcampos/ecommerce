@@ -20,6 +20,7 @@ export const getProducts = cache(
     category?: string,
     itemsPeerPage?: number,
     skip?: number,
+    sort?: 'asc' | 'desc',
   ) => {
     const products = await prisma.product.findMany({
       where: {
@@ -28,6 +29,9 @@ export const getProducts = cache(
       },
       take: itemsPeerPage,
       skip,
+      orderBy: {
+        price: sort,
+      },
     })
     if (!products) notFound()
     return products
@@ -48,7 +52,12 @@ export const countSearchProducts = cache(async (search: string) => {
 })
 
 export const getSearchProducts = cache(
-  async (search: string, itemsPeerPage?: number, skip?: number) => {
+  async (
+    search: string,
+    itemsPeerPage?: number,
+    skip?: number,
+    sort?: 'asc' | 'desc',
+  ) => {
     const products = await prisma.product.findMany({
       where: {
         OR: [
@@ -59,6 +68,9 @@ export const getSearchProducts = cache(
       },
       take: itemsPeerPage,
       skip,
+      orderBy: {
+        price: sort,
+      },
     })
     if (!products) notFound()
     return products
