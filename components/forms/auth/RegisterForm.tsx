@@ -44,7 +44,12 @@ export default function RegisterForm() {
     <form onSubmit={handleSubmit(handleRegister)}>
       <Input label="Nome" {...register('name')} error={errors.name} />
       <Input label="Email" {...register('email')} error={errors.email} />
-      <Input label="Senha" {...register('password')} error={errors.password} />
+      <Input
+        label="Senha"
+        type="password"
+        {...register('password')}
+        error={errors.password}
+      />
       <Input
         label="cofirmar senha"
         {...register('confirm')}

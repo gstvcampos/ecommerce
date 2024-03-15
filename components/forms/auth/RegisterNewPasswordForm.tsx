@@ -46,11 +46,13 @@ export default function RegisterNewPasswordForm() {
     <form onSubmit={handleSubmit(handleNewPassword)}>
       <Input
         label="Nova senha"
+        type="password"
         {...register('password')}
         error={errors.password}
       />
       <Input
         label="Cofirmar senha"
+        type="password"
         {...register('confirm')}
         error={errors.confirm}
       />

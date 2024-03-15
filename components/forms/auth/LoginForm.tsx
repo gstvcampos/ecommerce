@@ -61,7 +61,12 @@ export default function LoginForm() {
   return (
     <form onSubmit={handleSubmit(handleLogin)} className="text-end">
       <Input label="Email" {...register('email')} error={errors.email} />
-      <Input label="Senha" {...register('password')} error={errors.password} />
+      <Input
+        label="Senha"
+        type="password"
+        {...register('password')}
+        error={errors.password}
+      />
       <FormError message={error || urlError} />
       <FormSuccess message={success} />
       <Link href="reset" className="text-xs hover:underline">
