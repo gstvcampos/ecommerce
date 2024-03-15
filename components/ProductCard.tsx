@@ -19,6 +19,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           <Image
             src={product.imageUrls[0]}
             alt={product.name}
+            sizes="(min-width: 640px) 25vw, 50vw"
             fill
             className="object-cover object-center absolute top-0 left-0"
           />
