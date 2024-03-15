@@ -5,7 +5,7 @@ type DropdownSortProps = {
 }
 
 export default function DropdownSort({ searchParams }: DropdownSortProps) {
-  const sortVariants = ['ASC', 'DESC', 'PROMO', 'POPULAR']
+  const sortVariants = ['MAIOR VALOR', 'MENOR VALOR']
 
   return (
     <div className="dropdown dropdown-end">

@@ -8,7 +8,7 @@ export default function Footer() {
     <footer className="px-2.5 py-4 bg-base-200 text-base-content">
       <div className="footer max-w-screen-xl mx-auto">
         <nav>
-          <h4 className="footer-title">Informações</h4>
+          <h3 className="footer-title">Informações</h3>
           <a
             href="/"
             className="link link-hover"
@@ -43,7 +43,7 @@ export default function Footer() {
           </a>
         </nav>
         <nav>
-          <h4 className="footer-title">Fale conosco</h4>
+          <h3 className="footer-title">Fale conosco</h3>
           <a
             href="/"
             className="link link-hover"
@@ -60,7 +60,7 @@ export default function Footer() {
           </a>
         </nav>
         <form>
-          <h4 className="footer-title">Receba nossas Ofertas e Novidades</h4>
+          <h3 className="footer-title">Receba nossas Ofertas e Novidades</h3>
           <fieldset className="form-control w-80">
             <div className="join">
               <input
