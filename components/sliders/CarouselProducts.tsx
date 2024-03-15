@@ -89,12 +89,14 @@ export default function CarouselProducts({
         <button
           className="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white rounded-full p-1 shadow-lg"
           onClick={handlePrev}
+          aria-label="Previous"
         >
           <PrevIcon />
         </button>
         <button
           className="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white rounded-full p-1 shadow-lg"
           onClick={handleNext}
+          aria-label="Next"
         >
           <NextIcon />
         </button>
