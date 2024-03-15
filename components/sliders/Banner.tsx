@@ -17,7 +17,13 @@ export default function Banner({ slides }: { slides: string[] }) {
   return (
     <div>
       <div className="relative h-[220px] md:h-[340px] w-full">
-        <Image src={slides[curr]} fill alt="banner" className="object-cover" />
+        <Image
+          src={slides[curr]}
+          fill
+          priority
+          alt="banner"
+          className="object-cover"
+        />
         <div className="absolute inset-0 flex items-center justify-between">
           <button onClick={prev} className="text-primary-content p-4">
             ❮
