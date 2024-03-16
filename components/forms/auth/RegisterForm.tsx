@@ -5,12 +5,14 @@ import registerAction from '@/actions/register'
 import { Input } from '@/components/Input'
 import { registerSchema } from '@/schemas/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next/navigation'
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import FormError from '../FormError'
 import FormSuccess from '../FormSuccess'
 
 export default function RegisterForm() {
+  const router = useRouter()
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState<string | undefined>('')
   const [success, setSuccess] = useState<string | undefined>('')
@@ -36,6 +38,12 @@ export default function RegisterForm() {
       registerAction(values).then((data) => {
         setError(data.error)
         setSuccess(data.success)
+
+        if (data.success) {
+          setTimeout(() => {
+            router.push('/auth/login')
+          }, 1000)
+        }
       })
     })
   }
