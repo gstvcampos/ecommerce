@@ -60,6 +60,7 @@ export default function RegisterForm() {
       />
       <Input
         label="cofirmar senha"
+        type="password"
         {...register('confirm')}
         error={errors.confirm}
       />

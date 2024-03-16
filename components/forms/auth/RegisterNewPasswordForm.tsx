@@ -5,13 +5,14 @@ import { newPasswordAction } from '@/actions/newPassword'
 import { Input } from '@/components/Input'
 import { newPasswordSchema } from '@/schemas/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import FormError from '../FormError'
 import FormSuccess from '../FormSuccess'
 
 export default function RegisterNewPasswordForm() {
+  const router = useRouter()
   const searchParams = useSearchParams()
   const token = searchParams.get('token')
 
@@ -38,6 +39,12 @@ export default function RegisterNewPasswordForm() {
       newPasswordAction(values, token).then((data) => {
         setError(data?.error)
         setSuccess(data?.success)
+
+        if (data.success) {
+          setTimeout(() => {
+            router.push('/auth/login')
+          }, 2000)
+        }
       })
     })
   }

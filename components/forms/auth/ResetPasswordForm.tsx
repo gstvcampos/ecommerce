@@ -11,6 +11,7 @@ import FormError from '../FormError'
 import FormSuccess from '../FormSuccess'
 
 export default function ResetPasswordForm() {
+  const router = useRouter()
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState<string | undefined>('')
   const [success, setSuccess] = useState<string | undefined>('')
@@ -30,6 +31,11 @@ export default function ResetPasswordForm() {
       resetAction(values).then((data) => {
         setError(data.error)
         setSuccess(data.success)
+        if (data.success) {
+          setTimeout(() => {
+            router.push('/auth/login')
+          }, 2000)
+        }
       })
     })
   }
