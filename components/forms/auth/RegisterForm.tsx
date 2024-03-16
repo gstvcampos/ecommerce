@@ -42,7 +42,7 @@ export default function RegisterForm() {
         if (data.success) {
           setTimeout(() => {
             router.push('/auth/login')
-          }, 1000)
+          }, 2000)
         }
       })
     })
