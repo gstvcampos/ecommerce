@@ -42,11 +42,13 @@ export default function Verificacao() {
 
   return (
     <MaxWidthWrapper>
-      {!success && !error && (
-        <span className="loading loading-dots loading-lg"></span>
-      )}
-      <FormSuccess message={success} />
-      {!success && <FormError message={error} />}
+      <section className="py-8 w-full max-w-sm mx-auto text-center">
+        {!success && !error && (
+          <span className="loading loading-dots loading-lg"></span>
+        )}
+        <FormSuccess message={success} />
+        {!success && <FormError message={error} />}
+      </section>
     </MaxWidthWrapper>
   )
 }
