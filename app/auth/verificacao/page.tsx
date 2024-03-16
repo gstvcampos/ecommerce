@@ -1,18 +1,22 @@
 'use client'
 
 import { newVerification } from '@/actions/newVerification'
+import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import FormError from '@/components/forms/FormError'
 import FormSuccess from '@/components/forms/FormSuccess'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
 
 export default function Verificacao() {
+  const router = useRouter()
   const searchParams = useSearchParams()
   const token = searchParams.get('token')
   const [error, setError] = useState<string | undefined>()
   const [success, setSuccess] = useState<string | undefined>()
 
   const onSubmit = useCallback(() => {
+    if (success || error) return
+
     if (!token) {
       setError('Token é necessário')
       return
@@ -21,23 +25,28 @@ export default function Verificacao() {
       .then((data) => {
         setSuccess(data.success)
         setError(data.error)
+        if (data.success) {
+          setTimeout(() => {
+            router.push('/auth/login')
+          }, 2000)
+        }
       })
       .catch(() => {
         setError('Alguma coisa deu errado')
       })
-  }, [token])
+  }, [token, success, error, router])
 
   useEffect(() => {
     onSubmit()
   }, [onSubmit])
 
   return (
-    <div>
+    <MaxWidthWrapper>
       {!success && !error && (
         <span className="loading loading-dots loading-lg"></span>
       )}
-      <FormError message={error} />
       <FormSuccess message={success} />
-    </div>
+      {!success && <FormError message={error} />}
+    </MaxWidthWrapper>
   )
 }
