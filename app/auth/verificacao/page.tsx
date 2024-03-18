@@ -42,7 +42,7 @@ export default function Verificacao() {
 
   return (
     <MaxWidthWrapper>
-      <section className="py-8 w-full max-w-sm mx-auto text-center">
+      <section className="py-32 w-full max-w-sm mx-auto text-center">
         {!success && !error && (
           <span className="loading loading-dots loading-lg"></span>
         )}
