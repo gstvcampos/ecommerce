@@ -12,7 +12,7 @@ const mont = Montserrat({
 
 export const metadata: Metadata = {
   title: 'Hashtag Store',
-  description: 'Loja oficial do vasco da gama',
+  description: 'Loja hashtag um ecoomerce fullstack criado por gstvcampos',
 }
 
 export default async function RootLayout({

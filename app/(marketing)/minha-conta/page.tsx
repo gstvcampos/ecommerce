@@ -1,18 +1,34 @@
 import { signOut } from '@/auth'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
+import { AddressIcon } from '@/components/icons/AddressIcon'
+import { LogoutIcon } from '@/components/icons/LogoutIcon'
+import { OrderIcon } from '@/components/icons/OrderIcon'
+import { ProfileDataIcon } from '@/components/icons/ProfileDataIcon'
 import { revalidatePath } from 'next/cache'
 import Link from 'next/link'
 
 export default async function MinhaConta() {
   return (
-    <MaxWidthWrapper className="flex flex-col gap-6 py-12 min-h-96">
-      <Link className="hover:underline" href={'/minha-conta/dados-pessoais'}>
+    <MaxWidthWrapper className="grid md:grid-cols-2 gap-6 py-12 min-h-96 max-w-screen-md">
+      <Link
+        className="inline-flex items-center gap-4 border p-5 hover:underline"
+        href={'/minha-conta/dados-pessoais'}
+      >
+        <ProfileDataIcon />
         Dados pessoais
       </Link>
-      <Link className="hover:underline" href={'/minha-conta/enderecos'}>
+      <Link
+        className="inline-flex items-center gap-4 border p-5 hover:underline"
+        href={'/minha-conta/enderecos'}
+      >
+        <AddressIcon />
         Endereços
       </Link>
-      <Link className="hover:underline" href={'/minha-conta/pedidos'}>
+      <Link
+        className="inline-flex items-center gap-4 border p-5 hover:underline"
+        href={'/minha-conta/pedidos'}
+      >
+        <OrderIcon />
         Pedidos
       </Link>
       <form
@@ -21,9 +37,12 @@ export default async function MinhaConta() {
           await signOut()
           revalidatePath('/')
         }}
-        className="inline-flex items-center"
+        className="inline-flex border p-5 hover:underline"
       >
-        <button type="submit">Sair</button>
+        <button type="submit" className="inline-flex items-center gap-4">
+          <LogoutIcon />
+          Logout
+        </button>
       </form>
     </MaxWidthWrapper>
   )
