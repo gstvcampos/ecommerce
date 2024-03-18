@@ -27,17 +27,6 @@ export default async function loginAction(
     return { error: 'Email ou senha invalido' }
   }
 
-  if (!existingUser.emailVerified) {
-    const verificationToken = await generateVerificationToken(
-      existingUser.email,
-    )
-    await sendVerificationEmail(
-      verificationToken.email,
-      verificationToken.token,
-    )
-    return { success: 'Confirmação de email enviada' }
-  }
-
   try {
     await signIn('credentials', {
       email,
