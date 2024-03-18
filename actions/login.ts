@@ -3,8 +3,6 @@
 import { Login } from '@/@types/auth'
 import { signIn } from '@/auth'
 import { getUserByEmail } from '@/db/user'
-import { sendVerificationEmail } from '@/lib/mail'
-import { generateVerificationToken } from '@/lib/tokens'
 import { DEFAULT_LOGIN_REDIRECT } from '@/routes'
 import { loginSchema } from '@/schemas/auth'
 import { AuthError } from 'next-auth'
