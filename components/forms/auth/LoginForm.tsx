@@ -10,7 +10,6 @@ import { useSearchParams } from 'next/navigation'
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import FormError from '../FormError'
-import FormSuccess from '../FormSuccess'
 
 export default function LoginForm() {
   const searchParams = useSearchParams()
@@ -22,7 +21,6 @@ export default function LoginForm() {
 
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState<string | undefined>('')
-  const [success, setSuccess] = useState<string | undefined>('')
 
   const {
     register,
@@ -39,7 +37,6 @@ export default function LoginForm() {
 
   const handleLogin = (values: Login) => {
     setError('')
-    setSuccess('')
 
     startTransition(() => {
       loginAction(values, callbackUrl)
@@ -47,11 +44,6 @@ export default function LoginForm() {
           if (data?.error) {
             reset()
             setError(data.error)
-          }
-
-          if (data?.success) {
-            reset()
-            setSuccess(data.success)
           }
         })
         .catch(() => setError('Tente novamente mais tarde'))
@@ -68,7 +60,6 @@ export default function LoginForm() {
         error={errors.password}
       />
       <FormError message={error || urlError} />
-      <FormSuccess message={success} />
       <Link href="reset" className="text-xs hover:underline">
         esqueceu a senha?
       </Link>
