@@ -13,8 +13,8 @@ export const userSchema = z.object({
 })
 
 export const editUserSchema = z.object({
-  name: z.string().min(3, 'minimo 3 caracteres').or(z.literal('')),
-  email: z.string().email('Formato de email invalido').or(z.literal('')),
-  phoneNumber: z.string().min(8, 'minimo 8 caracteres').or(z.literal('')),
-  cpf: z.string().length(11, 'CPF invalido').or(z.literal('')),
+  name: z.string().min(3, 'minimo 3 caracteres'),
+  email: z.string().email('Formato de email invalido'),
+  phoneNumber: z.string().min(8, 'minimo 8 caracteres'),
+  cpf: z.string().length(11, 'CPF invalido'),
 })
