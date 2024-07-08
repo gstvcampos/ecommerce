@@ -13,8 +13,8 @@ export default async function CartPage() {
         <h2 className="text-2xl font-bold">PRODUTOS</h2>
         {cart?.items.map((cartItem) => (
           <CartEntry
-            cartItem={cartItem}
             key={cartItem.id}
+            cartItem={cartItem}
             setProductQuantity={setProductQuantity}
           />
         ))}
