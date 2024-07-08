@@ -10,7 +10,7 @@ export default async function CartPage() {
   return (
     <MaxWidthWrapper className="py-8 flex justify-between flex-wrap">
       <div className="w-full lg:w-2/3 p-4">
-        <h2 className="text-2xl font-bold">Meu Carrinho</h2>
+        <h2 className="text-2xl font-bold">PRODUTOS</h2>
         {cart?.items.map((cartItem) => (
           <CartEntry
             cartItem={cartItem}
