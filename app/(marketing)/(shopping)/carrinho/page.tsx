@@ -7,6 +7,7 @@ import Link from 'next/link'
 
 export default async function CartPage() {
   const cart = await getCart()
+
   return (
     <MaxWidthWrapper className="py-8 flex justify-between flex-wrap">
       <div className="w-full lg:w-2/3 p-4">
