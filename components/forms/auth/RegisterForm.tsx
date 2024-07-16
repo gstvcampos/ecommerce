@@ -1,7 +1,7 @@
 'use client'
 
 import { Register } from '@/@types/auth'
-import registerAction from '@/actions/register'
+import registerAction from '@/actions/auth/register'
 import { Input } from '@/components/Input'
 import { registerSchema } from '@/schemas/auth'
 import { zodResolver } from '@hookform/resolvers/zod'

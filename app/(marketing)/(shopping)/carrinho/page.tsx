@@ -1,4 +1,4 @@
-import setProductQuantity from '@/actions/setProductQuantity'
+import setProductQuantity from '@/actions/marketing/setProductQuantity'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import CartEntry from '@/components/cart/CartEntry'
 import ResumeCart from '@/components/cart/ResumeCart'

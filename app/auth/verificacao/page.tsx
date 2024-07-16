@@ -1,6 +1,6 @@
 'use client'
 
-import { newVerification } from '@/actions/newVerification'
+import { newVerification } from '@/actions/auth/newVerification'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import FormError from '@/components/forms/FormError'
 import FormSuccess from '@/components/forms/FormSuccess'

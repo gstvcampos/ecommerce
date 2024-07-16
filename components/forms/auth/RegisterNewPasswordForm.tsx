@@ -1,7 +1,7 @@
 'use client'
 
 import { NewPassword } from '@/@types/auth'
-import { newPasswordAction } from '@/actions/newPassword'
+import { newPasswordAction } from '@/actions/auth/newPassword'
 import { Input } from '@/components/Input'
 import { newPasswordSchema } from '@/schemas/auth'
 import { zodResolver } from '@hookform/resolvers/zod'

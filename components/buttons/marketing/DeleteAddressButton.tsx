@@ -1,6 +1,6 @@
 'use client'
 
-import { deleteAddress } from '@/actions/deleteAddress'
+import { deleteAddress } from '@/actions/marketing/deleteAddress'
 import { DeleteIcon } from '@/components/icons/DeleteIcon'
 import { useTransition } from 'react'
 

@@ -2,7 +2,7 @@
 
 import { Address } from '@/@types/address'
 import { melhorEnvioData } from '@/@types/melhorEnvio'
-import { getFreightValue } from '@/actions/getFreightValue'
+import { getFreightValue } from '@/actions/marketing/getFreightValue'
 import { formatPrice } from '@/lib/ultis'
 import { useState } from 'react'
 import { CepInput } from '../CepInput'

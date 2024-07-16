@@ -2,7 +2,7 @@
 
 import { Address } from '@/@types/address'
 import { State } from '@/@types/state'
-import { createAddressAction } from '@/actions/createAddress'
+import { createAddressAction } from '@/actions/marketing/createAddress'
 import { CepInput } from '@/components/CepInput'
 import { Input } from '@/components/Input'
 import { useState } from 'react'

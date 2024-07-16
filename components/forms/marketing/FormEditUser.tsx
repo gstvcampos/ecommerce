@@ -1,7 +1,7 @@
 'use client'
 
 import { EditUser, User } from '@/@types/user'
-import editUserInfoAction from '@/actions/editUserInfoAction'
+import editUserInfoAction from '@/actions/marketing/editUserInfoAction'
 import { Input } from '@/components/Input'
 import { editUserSchema } from '@/schemas/user'
 import { zodResolver } from '@hookform/resolvers/zod'

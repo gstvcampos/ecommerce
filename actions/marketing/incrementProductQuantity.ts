@@ -1,8 +1,8 @@
 'use server'
 
+import { createCart, getCart } from '@/db/cart'
 import { prisma } from '@/db/prisma'
 import { revalidatePath } from 'next/cache'
-import { createCart, getCart } from '../db/cart'
 
 export async function incrementProductQuantity(productId: string) {
   const cart = (await getCart()) ?? (await createCart())

@@ -1,7 +1,7 @@
 'use client'
 
 import { Login } from '@/@types/auth'
-import loginAction from '@/actions/login'
+import loginAction from '@/actions/auth/login'
 import { Input } from '@/components/Input'
 import { loginSchema } from '@/schemas/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
