@@ -1,5 +1,6 @@
 import { auth } from '@/auth'
 import AdminHeader from '@/components/headers/admin/AdminHeader'
+import Aside from '@/components/headers/admin/Aside'
 import { redirect } from 'next/navigation'
 
 export default async function AdminLayout({
@@ -12,10 +13,13 @@ export default async function AdminLayout({
     redirect('/')
   } else {
     return (
-      <>
-        <AdminHeader />
-        <div className="flex-grow flex-1">{children}</div>
-      </>
+      <div className="flex min-h-screen">
+        <Aside />
+        <div className="w-full">
+          <AdminHeader />
+          <div className="flex-grow flex-1">{children}</div>
+        </div>
+      </div>
     )
   }
 }

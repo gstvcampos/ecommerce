@@ -114,7 +114,7 @@ export default function FormAddProduct() {
       <FormError message={error} />
       <FormSuccess message={success} />
       <button className="btn btn-block mt-3" type="submit" disabled={isPending}>
-        Add Product
+        Adicionar Produto
       </button>
     </form>
   )
