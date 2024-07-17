@@ -2,7 +2,7 @@
 
 import { NewPassword } from '@/@types/auth'
 import { newPasswordAction } from '@/actions/auth/newPassword'
-import { Input } from '@/components/Input'
+import { Input } from '@/components/ui/Input'
 import { newPasswordSchema } from '@/schemas/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter, useSearchParams } from 'next/navigation'

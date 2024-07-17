@@ -2,9 +2,9 @@
 
 import { Product } from '@prisma/client'
 import { useRef, useState } from 'react'
-import ProductCard from '../ProductCard'
 import { NextIcon } from '../icons/NextIcon'
 import { PrevIcon } from '../icons/PrevIcon'
+import ProductCard from '../product/ProductCard'
 
 export default function CarouselProducts({
   products,

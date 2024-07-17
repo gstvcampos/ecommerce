@@ -1,5 +1,5 @@
-import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import RegisterNewPasswordForm from '@/components/forms/auth/RegisterNewPasswordForm'
+import MaxWidthWrapper from '@/components/layouts/MaxWidthWrapper'
 
 export default function NovaSenha() {
   return (

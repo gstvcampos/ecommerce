@@ -1,7 +1,7 @@
 import setProductQuantity from '@/actions/marketing/setProductQuantity'
-import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import CartEntry from '@/components/cart/CartEntry'
 import ResumeCart from '@/components/cart/ResumeCart'
+import MaxWidthWrapper from '@/components/layouts/MaxWidthWrapper'
 import { getCart } from '@/db/cart'
 import Link from 'next/link'
 

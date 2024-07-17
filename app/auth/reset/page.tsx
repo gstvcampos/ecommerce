@@ -1,5 +1,5 @@
-import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import ResetPasswordForm from '@/components/forms/auth/ResetPasswordForm'
+import MaxWidthWrapper from '@/components/layouts/MaxWidthWrapper'
 
 export default function Reset() {
   return (

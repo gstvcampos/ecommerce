@@ -1,6 +1,6 @@
-import Drawer from '@/components/Drawer'
 import { LogoIcon } from '@/components/icons/LogoIcon'
 import { MenuIcon } from '@/components/icons/MenuIcon'
+import Drawer from '@/components/layouts/Drawer'
 import Link from 'next/link'
 import NavButtons from './NavButtons'
 import NavItems from './NavItems'

@@ -2,7 +2,7 @@
 
 import { EditUser, User } from '@/@types/user'
 import editUserInfoAction from '@/actions/marketing/editUserInfoAction'
-import { Input } from '@/components/Input'
+import { Input } from '@/components/ui/Input'
 import { editUserSchema } from '@/schemas/user'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useState, useTransition } from 'react'

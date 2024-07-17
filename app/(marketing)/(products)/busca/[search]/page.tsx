@@ -1,8 +1,8 @@
-import MaxWidthWrapper from '@/components/MaxWidthWrapper'
-import PaginationBar from '@/components/PaginationBar'
-import ProductCard from '@/components/ProductCard'
-import DrawerFilter from '@/components/search/DrawerFilter'
-import DropdownSort from '@/components/search/DropdownSort'
+import DrawerFilter from '@/components/layouts/DrawerFilter'
+import DropdownSort from '@/components/layouts/DropdownSort'
+import MaxWidthWrapper from '@/components/layouts/MaxWidthWrapper'
+import PaginationBar from '@/components/layouts/PaginationBar'
+import ProductCard from '@/components/product/ProductCard'
 import { countSearchProducts, getSearchProducts } from '@/db/products'
 import { calcPagination } from '@/lib/ultis'
 

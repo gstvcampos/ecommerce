@@ -1,5 +1,5 @@
-import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import RegisterForm from '@/components/forms/auth/RegisterForm'
+import MaxWidthWrapper from '@/components/layouts/MaxWidthWrapper'
 
 export default function Cadastro() {
   return (

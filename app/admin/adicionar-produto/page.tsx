@@ -1,5 +1,5 @@
-import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import FormAddProduct from '@/components/forms/admin/FormAddProduct'
+import MaxWidthWrapper from '@/components/layouts/MaxWidthWrapper'
 
 export default function AddProduct() {
   return (

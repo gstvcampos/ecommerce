@@ -1,6 +1,6 @@
-import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import FormCreateAddress from '@/components/forms/marketing/FormCreateAddress'
 import { ArrowLeftIcon } from '@/components/icons/ArrowLeftIcon'
+import MaxWidthWrapper from '@/components/layouts/MaxWidthWrapper'
 import Link from 'next/link'
 
 export default async function NewAddress() {

@@ -2,8 +2,8 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
-import { CloseIcon } from './icons/CloseIcon'
-import { ImagePlaceholderIcon } from './icons/ImagePlaceholderIcon'
+import { CloseIcon } from '../icons/CloseIcon'
+import { ImagePlaceholderIcon } from '../icons/ImagePlaceholderIcon'
 
 export default function MultipleImgInput({
   getFiles,

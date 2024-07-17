@@ -1,9 +1,9 @@
 'use client'
 
 import { newVerification } from '@/actions/auth/newVerification'
-import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import FormError from '@/components/forms/FormError'
 import FormSuccess from '@/components/forms/FormSuccess'
+import MaxWidthWrapper from '@/components/layouts/MaxWidthWrapper'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
 

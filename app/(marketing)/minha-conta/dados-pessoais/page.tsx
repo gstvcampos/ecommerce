@@ -1,8 +1,8 @@
 import { User } from '@/@types/user'
 import { auth } from '@/auth'
-import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import FormEditUser from '@/components/forms/marketing/FormEditUser'
 import { ArrowLeftIcon } from '@/components/icons/ArrowLeftIcon'
+import MaxWidthWrapper from '@/components/layouts/MaxWidthWrapper'
 import { getUserById } from '@/db/user'
 import Link from 'next/link'
 

@@ -1,7 +1,7 @@
-import { FacebookIcon } from './icons/FacebookIcon'
-import { LogoIcon } from './icons/LogoIcon'
-import { TwitterIcon } from './icons/TwitterIcon'
-import { YoutubeIcon } from './icons/YoutubeIcon'
+import { FacebookIcon } from '../icons/FacebookIcon'
+import { LogoIcon } from '../icons/LogoIcon'
+import { TwitterIcon } from '../icons/TwitterIcon'
+import { YoutubeIcon } from '../icons/YoutubeIcon'
 
 export default function Footer() {
   return (

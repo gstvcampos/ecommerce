@@ -1,5 +1,5 @@
-import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import { ArrowLeftIcon } from '@/components/icons/ArrowLeftIcon'
+import MaxWidthWrapper from '@/components/layouts/MaxWidthWrapper'
 import Link from 'next/link'
 
 export default async function Pedidos() {

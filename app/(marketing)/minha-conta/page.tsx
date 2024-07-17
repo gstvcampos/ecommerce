@@ -1,9 +1,9 @@
 import { signOut } from '@/auth'
-import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import { AddressIcon } from '@/components/icons/AddressIcon'
 import { LogoutIcon } from '@/components/icons/LogoutIcon'
 import { OrderIcon } from '@/components/icons/OrderIcon'
 import { ProfileDataIcon } from '@/components/icons/ProfileDataIcon'
+import MaxWidthWrapper from '@/components/layouts/MaxWidthWrapper'
 import { revalidatePath } from 'next/cache'
 import Link from 'next/link'
 

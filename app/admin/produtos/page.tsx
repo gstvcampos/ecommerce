@@ -1,4 +1,4 @@
-import MaxWidthWrapper from '@/components/MaxWidthWrapper'
+import MaxWidthWrapper from '@/components/layouts/MaxWidthWrapper'
 import { prisma } from '@/db/prisma'
 import Link from 'next/link'
 

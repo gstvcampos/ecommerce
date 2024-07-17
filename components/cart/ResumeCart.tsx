@@ -5,8 +5,7 @@ import { melhorEnvioData } from '@/@types/melhorEnvio'
 import { getFreightValue } from '@/actions/marketing/getFreightValue'
 import { formatPrice } from '@/lib/ultis'
 import { useState } from 'react'
-import { CepInput } from '../CepInput'
-import OptionsFreight from '../OptionsFreight'
+import { CepInput } from '../ui/CepInput'
 
 export default function ResumeCart({ subTotal }: { subTotal: number }) {
   const [freightOptions, setFreightOptions] = useState<null | melhorEnvioData>(
@@ -28,7 +27,21 @@ export default function ResumeCart({ subTotal }: { subTotal: number }) {
 
       <CepInput getAddress={getAddress} />
 
-      <OptionsFreight freightOptions={freightOptions} />
+      <div className="space-y-4">
+        {freightOptions?.map((freightOption) => {
+          return (
+            freightOption.price && (
+              <div
+                key={freightOption.id}
+                className="flex items-center gap-2 border px-2 py-1 bg-base-200"
+              >
+                <span>{formatPrice(Number(freightOption.price))}</span>
+                <span className="uppercase">{freightOption.name}</span>
+              </div>
+            )
+          )
+        })}
+      </div>
     </>
   )
 }

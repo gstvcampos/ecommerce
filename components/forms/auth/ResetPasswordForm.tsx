@@ -1,8 +1,8 @@
 'use client'
 
 import { Reset } from '@/@types/auth'
-import { resetAction } from '@/actions/reset'
-import { Input } from '@/components/Input'
+import { resetAction } from '@/actions/auth/reset'
+import { Input } from '@/components/ui/Input'
 import { resetSchema } from '@/schemas/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'

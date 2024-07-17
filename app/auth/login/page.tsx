@@ -1,7 +1,7 @@
-import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import FacebookButton from '@/components/buttons/auth/FacebookButton'
 import GoogleButton from '@/components/buttons/auth/GoogleButton'
 import LoginForm from '@/components/forms/auth/LoginForm'
+import MaxWidthWrapper from '@/components/layouts/MaxWidthWrapper'
 import Link from 'next/link'
 
 export default function Login() {

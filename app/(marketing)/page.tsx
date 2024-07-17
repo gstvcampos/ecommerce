@@ -1,4 +1,4 @@
-import MaxWidthWrapper from '@/components/MaxWidthWrapper'
+import MaxWidthWrapper from '@/components/layouts/MaxWidthWrapper'
 import Banner from '@/components/sliders/Banner'
 import CarouselProducts from '@/components/sliders/CarouselProducts'
 import { prisma } from '@/db/prisma'

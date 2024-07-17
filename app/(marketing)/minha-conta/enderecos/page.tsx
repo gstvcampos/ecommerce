@@ -1,7 +1,7 @@
 import { auth } from '@/auth'
-import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import DeleteAddressButton from '@/components/buttons/marketing/DeleteAddressButton'
 import { ArrowLeftIcon } from '@/components/icons/ArrowLeftIcon'
+import MaxWidthWrapper from '@/components/layouts/MaxWidthWrapper'
 import { prisma } from '@/db/prisma'
 import Link from 'next/link'
 

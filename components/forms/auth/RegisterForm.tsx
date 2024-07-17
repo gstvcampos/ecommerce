@@ -2,7 +2,7 @@
 
 import { Register } from '@/@types/auth'
 import registerAction from '@/actions/auth/register'
-import { Input } from '@/components/Input'
+import { Input } from '@/components/ui/Input'
 import { registerSchema } from '@/schemas/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
