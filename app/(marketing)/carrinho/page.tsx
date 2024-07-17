@@ -23,9 +23,6 @@ export default async function CartPage() {
       </div>
       <div className="w-full lg:w-1/3 p-4 gap-4 flex flex-col">
         <ResumeCart subTotal={cart?.subtotal || 0} />
-        <Link href={'/pagamento'} className="btn btn-primary w-full">
-          IR PARA PAGAMENTO
-        </Link>
         <Link href={'/'} className="btn btn-primary w-full">
           CONTINUAR COMPRANDO
         </Link>
