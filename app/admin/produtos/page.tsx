@@ -1,5 +1,7 @@
+import { ThreeDotsIcon } from '@/components/icons/ThreeDotsIcon'
 import MaxWidthWrapper from '@/components/layouts/MaxWidthWrapper'
 import { prisma } from '@/db/prisma'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default async function AdminProducts() {
@@ -17,19 +19,44 @@ export default async function AdminProducts() {
         <table className="table">
           <thead>
             <tr>
+              <th></th>
               <th>Name</th>
-              <th>Departamento</th>
-              <th>Categoria</th>
+              <th>Categoria / Departamento</th>
               <th>Preço</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             {products.map((product) => (
               <tr key={product.id}>
+                <td>
+                  <div className="flex items-center gap-3">
+                    <div className="avatar">
+                      <div className="mask mask-squircle h-12 w-12">
+                        <Image
+                          src={product.imageUrls[0]}
+                          alt={product.name}
+                          sizes="(min-width: 640px) 25vw, 50vw"
+                          fill
+                          className="object-cover object-center absolute top-0 left-0"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </td>
                 <td>{product.name}</td>
-                <td>{product.department}</td>
-                <td>{product.category}</td>
+                <td>
+                  <div>
+                    <div className="text-sm opacity-50">{product.category}</div>
+                    <div className="font-bold">{product.department}</div>
+                  </div>
+                </td>
                 <td>{product.price}</td>
+                <th>
+                  <button className="h-6 w-6">
+                    <ThreeDotsIcon />
+                  </button>
+                </th>
               </tr>
             ))}
           </tbody>
