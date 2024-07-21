@@ -26,6 +26,7 @@ export default async function AdminProducts() {
               <th></th>
             </tr>
           </thead>
+
           <tbody>
             {products.map((product) => (
               <tr key={product.id}>
@@ -53,9 +54,22 @@ export default async function AdminProducts() {
                 </td>
                 <td>{product.price}</td>
                 <th>
-                  <button className="h-6 w-6">
-                    <ThreeDotsIcon />
-                  </button>
+                  <div className="dropdown dropdown-hover dropdown-end">
+                    <div tabIndex={0} role="button" className="h-6 w-6">
+                      <ThreeDotsIcon />
+                    </div>
+                    <ul
+                      tabIndex={0}
+                      className="dropdown-content menu bg-base-100 rounded-box z-[1] w-28 p-2 shadow"
+                    >
+                      <li>
+                        <button>Excluir</button>
+                      </li>
+                      <li>
+                        <button>Editar</button>
+                      </li>
+                    </ul>
+                  </div>
                 </th>
               </tr>
             ))}
