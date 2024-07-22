@@ -2,6 +2,7 @@ import { auth } from '@/auth'
 import AdminHeader from '@/components/headers/admin/AdminHeader'
 import Aside from '@/components/headers/admin/Aside'
 import { redirect } from 'next/navigation'
+import { Toaster } from 'react-hot-toast'
 
 export default async function AdminLayout({
   children,
@@ -18,6 +19,7 @@ export default async function AdminLayout({
         <div className="w-full">
           <AdminHeader />
           <div className="flex-grow flex-1">{children}</div>
+          <Toaster position="top-right" reverseOrder={false} />{' '}
         </div>
       </div>
     )

@@ -1,6 +1,7 @@
 'use server'
 
 import { prisma } from '@/db/prisma'
+import { revalidatePath } from 'next/cache'
 
 export async function deleteProduct(productId: string) {
   if (!productId) {
@@ -11,9 +12,10 @@ export async function deleteProduct(productId: string) {
     await prisma.product.delete({
       where: { id: productId },
     })
+    revalidatePath('/')
     return { success: 'Produto deletado' }
   } catch (error) {
-    console.error(error)
+    revalidatePath('/')
     return { error: 'Erro ao deletar o produto' }
   }
 }

@@ -4,6 +4,7 @@ import { deleteProduct } from '@/actions/admin/deleteProduct'
 import { DialogContext } from '@/contexts/DialogContext'
 import { Product } from '@prisma/client'
 import { useContext } from 'react'
+import toast from 'react-hot-toast'
 
 export default function DeleteProductModal({ product }: { product: Product }) {
   const { openDelProduct, toggleDelProduct } = useContext(DialogContext)
@@ -11,11 +12,13 @@ export default function DeleteProductModal({ product }: { product: Product }) {
   const handleDelete = async (productId: string) => {
     deleteProduct(productId).then((data) => {
       if (data?.error) {
-        console.log(data.error)
+        toast.error(data.error)
+        toggleDelProduct()
       }
 
       if (data?.success) {
-        console.log(data.success)
+        toast.success(data.success)
+        toggleDelProduct()
       }
     })
   }
