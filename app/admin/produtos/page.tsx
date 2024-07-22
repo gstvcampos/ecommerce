@@ -61,7 +61,7 @@ export default async function AdminProducts() {
                 <th className="flex">
                   <DialogProvider>
                     <DeleteProductButton productId={product.id} />
-                    <EditProductButton productId={product.id} />
+                    <EditProductButton product={product} />
                   </DialogProvider>
                 </th>
               </tr>

@@ -7,3 +7,5 @@ export const createProductSchema = z.object({
   category: z.string().min(1, 'campo obrigatorio'),
   price: z.string().min(1, 'campo obrigatorio'),
 })
+
+export const partialProductSchema = createProductSchema.partial()
