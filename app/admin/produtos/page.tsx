@@ -1,4 +1,5 @@
-import { ThreeDotsIcon } from '@/components/icons/ThreeDotsIcon'
+import DeleteProductButton from '@/components/buttons/admin/DeleteProductButton'
+import EditProductButton from '@/components/buttons/admin/EditProductButton'
 import MaxWidthWrapper from '@/components/layouts/MaxWidthWrapper'
 import { prisma } from '@/db/prisma'
 import Image from 'next/image'
@@ -20,8 +21,11 @@ export default async function AdminProducts() {
           <thead>
             <tr>
               <th></th>
-              <th>Name</th>
-              <th>Categoria / Departamento</th>
+              <th>Produto</th>
+              <th>
+                Categoria / <br />
+                Departamento
+              </th>
               <th>Preço</th>
               <th></th>
             </tr>
@@ -53,23 +57,9 @@ export default async function AdminProducts() {
                   </div>
                 </td>
                 <td>{product.price}</td>
-                <th>
-                  <div className="dropdown dropdown-hover dropdown-end">
-                    <div tabIndex={0} role="button" className="h-6 w-6">
-                      <ThreeDotsIcon />
-                    </div>
-                    <ul
-                      tabIndex={0}
-                      className="dropdown-content menu bg-base-100 rounded-box z-[1] w-28 p-2 shadow"
-                    >
-                      <li>
-                        <button>Excluir</button>
-                      </li>
-                      <li>
-                        <button>Editar</button>
-                      </li>
-                    </ul>
-                  </div>
+                <th className="flex">
+                  <DeleteProductButton productId={product.id} />
+                  <EditProductButton productId={product.id} />
                 </th>
               </tr>
             ))}
