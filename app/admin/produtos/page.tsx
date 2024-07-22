@@ -1,6 +1,7 @@
 import DeleteProductButton from '@/components/buttons/admin/DeleteProductButton'
 import EditProductButton from '@/components/buttons/admin/EditProductButton'
 import MaxWidthWrapper from '@/components/layouts/MaxWidthWrapper'
+import { DialogProvider } from '@/contexts/DialogContext'
 import { prisma } from '@/db/prisma'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -58,8 +59,10 @@ export default async function AdminProducts() {
                 </td>
                 <td>{product.price}</td>
                 <th className="flex">
-                  <DeleteProductButton productId={product.id} />
-                  <EditProductButton productId={product.id} />
+                  <DialogProvider>
+                    <DeleteProductButton productId={product.id} />
+                    <EditProductButton productId={product.id} />
+                  </DialogProvider>
                 </th>
               </tr>
             ))}

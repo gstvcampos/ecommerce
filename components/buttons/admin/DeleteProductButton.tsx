@@ -1,13 +1,15 @@
 'use client'
 
 import { DeleteIcon } from '@/components/icons/DeleteIcon'
-import { useTransition } from 'react'
+import { DialogContext } from '@/contexts/DialogContext'
+import { useContext, useTransition } from 'react'
 
 export default function DeleteProductButton({
   productId,
 }: {
   productId: string
 }) {
+  const { toggleDelProduct } = useContext(DialogContext)
   const [isPending, startTransition] = useTransition()
 
   const handleDeleteClick = () => {
@@ -25,7 +27,9 @@ export default function DeleteProductButton({
       {isPending ? (
         <span className="loading loading-ring loading-lg"></span>
       ) : (
-        <DeleteIcon className="w-8 h-8" />
+        <button onClick={toggleDelProduct}>
+          <DeleteIcon className="w-8 h-8" />
+        </button>
       )}
     </button>
   )

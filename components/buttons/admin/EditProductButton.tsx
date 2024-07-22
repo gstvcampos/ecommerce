@@ -1,13 +1,15 @@
 'use client'
 
 import { EditIcon } from '@/components/icons/EditIcon'
-import { useTransition } from 'react'
+import { DialogContext } from '@/contexts/DialogContext'
+import { useContext, useTransition } from 'react'
 
 export default function EditProductButton({
   productId,
 }: {
   productId: string
 }) {
+  const { toggleDelProduct } = useContext(DialogContext)
   const [isPending, startTransition] = useTransition()
 
   const handleDeleteClick = () => {
@@ -25,7 +27,9 @@ export default function EditProductButton({
       {isPending ? (
         <span className="loading loading-ring loading-lg"></span>
       ) : (
-        <EditIcon className="w-8 h-8" />
+        <button onClick={toggleDelProduct}>
+          <EditIcon className="w-8 h-8" />
+        </button>
       )}
     </button>
   )
