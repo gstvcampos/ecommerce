@@ -2,20 +2,19 @@
 
 import { PartialProduct } from '@/@types/product'
 import { updateProduct } from '@/actions/admin/updateProduct'
-import FormError from '@/components/forms/FormError'
-import FormSuccess from '@/components/forms/FormSuccess'
 import { Input } from '@/components/ui/Input'
 import MultipleImgInput from '@/components/ui/MultipleImgInput'
+import { DialogContext } from '@/contexts/DialogContext'
 import { partialProductSchema } from '@/schemas/product'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Product } from '@prisma/client'
-import { useState, useTransition } from 'react'
+import { useContext, useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 
 export default function FormEditProduct({ product }: { product: Product }) {
+  const { toggleEditProduct } = useContext(DialogContext)
   const [isPending, startTransition] = useTransition()
-  const [error, setError] = useState<string | undefined>('')
-  const [success, setSuccess] = useState<string | undefined>('')
   const [imageFiles, setImageFiles] = useState<File[]>([])
 
   function getFiles(files: File[]) {
@@ -39,9 +38,6 @@ export default function FormEditProduct({ product }: { product: Product }) {
   })
 
   async function handleEditProduct(values: PartialProduct) {
-    setError('')
-    setSuccess('')
-
     const formData = new FormData()
 
     for (const key in values) {
@@ -56,19 +52,19 @@ export default function FormEditProduct({ product }: { product: Product }) {
     })
 
     startTransition(() => {
-      updateProduct(product.id, formData)
-        .then((data) => {
-          if (data?.error) {
-            reset()
-            setError(data.error)
-          }
+      updateProduct(product.id, formData).then((data) => {
+        if (data?.error) {
+          reset()
+          toast.error(data.error)
+          toggleEditProduct()
+        }
 
-          if (data?.success) {
-            reset()
-            setSuccess(data.success)
-          }
-        })
-        .catch(() => setError('Tente novamente mais tarde'))
+        if (data?.success) {
+          reset()
+          toast.success(data.success)
+          toggleEditProduct()
+        }
+      })
     })
   }
 
@@ -89,7 +85,9 @@ export default function FormEditProduct({ product }: { product: Product }) {
         {...register('price')}
         error={errors.price}
       />
+
       <MultipleImgInput getFiles={getFiles} />
+
       <select
         className="select select-bordered w-full mt-3"
         {...register('department')}
@@ -103,6 +101,7 @@ export default function FormEditProduct({ product }: { product: Product }) {
       {errors.department && (
         <span className="text-red-500">{errors.department.message}</span>
       )}
+
       <select
         className="select select-bordered w-full mt-3"
         {...register('category')}
@@ -115,8 +114,7 @@ export default function FormEditProduct({ product }: { product: Product }) {
           <span className="text-red-500">{errors.category.message}</span>
         )}
       </select>
-      <FormError message={error} />
-      <FormSuccess message={success} />
+
       <button className="btn btn-block mt-3" type="submit" disabled={isPending}>
         Editar Produto
       </button>

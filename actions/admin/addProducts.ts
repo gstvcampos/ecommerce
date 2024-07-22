@@ -2,6 +2,7 @@
 
 import { uploadImage } from '@/db/cloudinary'
 import { prisma } from '@/db/prisma'
+import { revalidatePath } from 'next/cache'
 
 export async function addProduct(formData: FormData) {
   const name = formData.get('name')?.toString()
@@ -21,5 +22,6 @@ export async function addProduct(formData: FormData) {
     data: { name, description, imageUrls, price, department, category },
   })
 
+  revalidatePath('/')
   return { success: 'Produto adicionado' }
 }

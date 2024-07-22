@@ -2,6 +2,7 @@
 
 import { uploadImage } from '@/db/cloudinary'
 import { prisma } from '@/db/prisma'
+import { revalidatePath } from 'next/cache'
 
 export async function updateProduct(id: string, formData: FormData) {
   const name = formData.get('name')?.toString()
@@ -32,6 +33,6 @@ export async function updateProduct(id: string, formData: FormData) {
     where: { id },
     data: updatedData,
   })
-
+  revalidatePath('/')
   return { success: 'Produto atualizado' }
 }
