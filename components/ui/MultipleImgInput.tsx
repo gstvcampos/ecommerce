@@ -15,25 +15,27 @@ export default function MultipleImgInput({
 
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     setError('')
-    const newFile = e.target.files
+    const newFiles = e.target.files
 
-    if (newFile) {
-      for (let i = 0; i < newFile.length; i++) {
-        const fileType = newFile[i].type
+    if (newFiles) {
+      const validFiles = Array.from(newFiles).filter((file) => {
+        const fileType = file.type
         const validImageTypes = [
           'image/gif',
           'image/jpeg',
           'image/png',
           'image/webp',
         ]
-        if (validImageTypes.includes(fileType)) {
-          const newFilesArray = [...files, newFile[i]]
-          setFile(newFilesArray)
-          getFiles(newFilesArray)
-        } else {
+        if (!validImageTypes.includes(fileType)) {
           setError('only images accepted')
+          return false
         }
-      }
+        return true
+      })
+
+      const newFilesArray = [...files, ...validFiles]
+      setFile(newFilesArray)
+      getFiles(newFilesArray)
     }
   }
 
