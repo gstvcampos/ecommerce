@@ -9,7 +9,15 @@ export default function DeleteProductModal({ product }: { product: Product }) {
   const { openDelProduct, toggleDelProduct } = useContext(DialogContext)
 
   const handleDelete = async (productId: string) => {
-    deleteProduct(productId)
+    deleteProduct(productId).then((data) => {
+      if (data?.error) {
+        console.log(data.error)
+      }
+
+      if (data?.success) {
+        console.log(data.success)
+      }
+    })
   }
 
   return (
