@@ -87,7 +87,9 @@ export const CarouselGalleryWidget = ({
           <div
             key={i}
             className="carousel-item w-full h-full relative aspect-square"
-            ref={(ref) => (allItemsRefs[i] = ref)}
+            ref={(ref: HTMLDivElement | null) => {
+              if (ref) allItemsRefs[i] = ref
+            }}
           >
             <Image src={url} alt="" fill className="object-cover" />
           </div>
