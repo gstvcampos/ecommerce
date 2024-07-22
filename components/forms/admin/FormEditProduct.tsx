@@ -1,6 +1,7 @@
 'use client'
 
 import { PartialProduct } from '@/@types/product'
+import { updateProduct } from '@/actions/admin/updateProduct'
 import FormError from '@/components/forms/FormError'
 import FormSuccess from '@/components/forms/FormSuccess'
 import { Input } from '@/components/ui/Input'
@@ -55,7 +56,7 @@ export default function FormEditProduct({ product }: { product: Product }) {
     })
 
     startTransition(() => {
-      updateProduct(formData)
+      updateProduct(product.id, formData)
         .then((data) => {
           if (data?.error) {
             reset()

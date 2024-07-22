@@ -1,41 +1,36 @@
 'use client'
 
 import { DialogContext } from '@/contexts/DialogContext'
+import { Product } from '@prisma/client'
 import { useContext } from 'react'
 
-export default function DeleteProductModal({
-  productId,
-}: {
-  productId: string
-}) {
+export default function DeleteProductModal({ product }: { product: Product }) {
   const { openDelProduct, toggleDelProduct } = useContext(DialogContext)
 
-  const handleDelete = async (id: string) => {
-    console.log(id)
+  const handleDelete = async (productId: string) => {
+    console.log(productId)
   }
 
   return (
     <>
       {openDelProduct && (
-        <div className="fixed inset-0 z-10 overflow-y-auto bg-black bg-opacity-50">
+        <div className="fixed inset-0 z-10 overflow-y-auto bg-black/50">
           <div className="flex min-h-screen items-center justify-center">
-            <div className="rounded-lg bg-zinc-900 p-6">
-              <h3 className="mb-4 text-center text-xl font-bold text-gray-300">
-                Excluir cliente
+            <div className="rounded-lg bg-base-100 p-6">
+              <h3 className="text-center font-bold pb-3">
+                EXCLUIR <br />
+                {product.name}
               </h3>
-              <p className="mb-4 text-center text-sm text-gray-300">
-                Tem certeza de que quer excluir esse produto?
-              </p>
               <div className="flex justify-between">
                 <button
-                  className="text-white:bg-red-900 rounded bg-red-600 px-4 py-2"
+                  className="rounded bg-error text-primary px-4 py-2"
                   onClick={toggleDelProduct}
                 >
                   Cancelar
                 </button>
                 <button
-                  className="rounded bg-green-600 px-4 py-2 text-white hover:bg-green-900"
-                  onClick={() => handleDelete(productId)}
+                  className="rounded bg-success text-primary px-4 py-2"
+                  onClick={() => handleDelete(product.id)}
                 >
                   Deletar
                 </button>

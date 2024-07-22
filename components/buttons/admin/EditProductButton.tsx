@@ -7,11 +7,11 @@ import { Product } from '@prisma/client'
 import { useContext } from 'react'
 
 export default function EditProductButton({ product }: { product: Product }) {
-  const { toggleDelProduct } = useContext(DialogContext)
+  const { toggleEditProduct } = useContext(DialogContext)
 
   return (
     <>
-      <button onClick={toggleDelProduct} className="inline-block w-10">
+      <button onClick={toggleEditProduct} className="inline-block w-10">
         <EditIcon className="w-8 h-8" />
       </button>
       <EditProductModal product={product} />
