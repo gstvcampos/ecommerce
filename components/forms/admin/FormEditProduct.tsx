@@ -54,7 +54,11 @@ export default function FormEditProduct({ product }: { product: Product }) {
     }
 
     imageFiles.forEach((file) => {
-      formData.append(`imageFiles`, file)
+      if (file.file) {
+        formData.append('imageFiles', file.file)
+      } else if (file.url) {
+        formData.append('imageFiles', file.url)
+      }
     })
 
     startTransition(() => {
