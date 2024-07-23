@@ -38,20 +38,25 @@ export default function MultipleImgInput({
     const newFiles = e.target.files
 
     if (newFiles) {
-      const validFiles = Array.from(newFiles).filter((file) => {
-        const fileType = file.type
-        const validImageTypes = [
-          'image/gif',
-          'image/jpeg',
-          'image/png',
-          'image/webp',
-        ]
-        if (!validImageTypes.includes(fileType)) {
-          setError('only images accepted')
-          return false
-        }
-        return true
-      })
+      const validFiles = Array.from(newFiles)
+        .filter((file) => {
+          const fileType = file.type
+          const validImageTypes = [
+            'image/gif',
+            'image/jpeg',
+            'image/png',
+            'image/webp',
+          ]
+          if (!validImageTypes.includes(fileType)) {
+            setError('only images accepted')
+            return false
+          }
+          return true
+        })
+        .map((file) => ({
+          file,
+          name: file.name,
+        }))
 
       const newFilesArray = [...files, ...validFiles]
       setFiles(newFilesArray)
@@ -60,7 +65,9 @@ export default function MultipleImgInput({
   }
 
   const removeImage = (name: string) => {
-    setFiles(files.filter((file) => file.name !== name))
+    const updatedFiles = files.filter((file) => file.name !== name)
+    setFiles(updatedFiles)
+    getFiles(updatedFiles)
   }
 
   return (

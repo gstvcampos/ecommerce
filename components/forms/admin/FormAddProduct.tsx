@@ -11,13 +11,19 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 
+interface ImageItem {
+  file?: File
+  url?: string
+  name: string
+}
+
 export default function FormAddProduct() {
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState<string | undefined>('')
   const [success, setSuccess] = useState<string | undefined>('')
-  const [imageFiles, setImageFiles] = useState<File[]>([])
+  const [imageFiles, setImageFiles] = useState<ImageItem[]>([])
 
-  function getFiles(files: File[]) {
+  function getFiles(files: ImageItem[]) {
     setImageFiles(files)
   }
 
@@ -48,7 +54,11 @@ export default function FormAddProduct() {
     }
 
     imageFiles.forEach((file) => {
-      formData.append(`imageFiles`, file)
+      if (file.file) {
+        formData.append('imageFiles', file.file)
+      } else if (file.url) {
+        formData.append('imageFiles', file.url)
+      }
     })
 
     startTransition(() => {
