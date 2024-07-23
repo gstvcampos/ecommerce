@@ -22,6 +22,7 @@ export async function updateProduct(id: string, formData: FormData) {
     where: { id },
     data: { name, description, imageUrls, price, department, category },
   })
+
   revalidatePath('/')
   return { success: 'Produto atualizado' }
 }

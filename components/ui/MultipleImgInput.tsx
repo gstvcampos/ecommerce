@@ -1,17 +1,37 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { CloseIcon } from '../icons/CloseIcon'
 import { ImagePlaceholderIcon } from '../icons/ImagePlaceholderIcon'
 
+interface ImageItem {
+  file?: File
+  url?: string
+  name: string
+}
+
+interface MultipleImgInputProps {
+  getFiles: (files: ImageItem[]) => void
+  initialFiles?: string[]
+}
+
 export default function MultipleImgInput({
   getFiles,
-}: {
-  getFiles: (files: File[]) => void
-}) {
-  const [files, setFile] = useState<File[]>([])
+  initialFiles,
+}: MultipleImgInputProps) {
+  const [files, setFiles] = useState<ImageItem[]>([])
   const [error, setError] = useState<string | undefined>('')
+
+  useEffect(() => {
+    if (initialFiles) {
+      const initialFileObjects = initialFiles.map((url) => ({
+        url,
+        name: url.split('/').pop() || '',
+      }))
+      setFiles(initialFileObjects)
+    }
+  }, [initialFiles])
 
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     setError('')
@@ -34,13 +54,13 @@ export default function MultipleImgInput({
       })
 
       const newFilesArray = [...files, ...validFiles]
-      setFile(newFilesArray)
+      setFiles(newFilesArray)
       getFiles(newFilesArray)
     }
   }
 
   const removeImage = (name: string) => {
-    setFile(files.filter((file) => file.name !== name))
+    setFiles(files.filter((file) => file.name !== name))
   }
 
   return (
@@ -77,7 +97,11 @@ export default function MultipleImgInput({
                 <CloseIcon className="h-5 w-5" />
               </button>
               <div className="w-20 h-20 rounded-lg relative">
-                <Image alt="" fill src={URL.createObjectURL(file)} />
+                <Image
+                  alt=""
+                  fill
+                  src={file.url || URL.createObjectURL(file.file!)}
+                />
               </div>
             </div>
           )

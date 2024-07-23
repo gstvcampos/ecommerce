@@ -12,12 +12,18 @@ import { useContext, useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
+interface ImageItem {
+  file?: File
+  url?: string
+  name: string
+}
+
 export default function FormEditProduct({ product }: { product: Product }) {
   const { toggleEditProduct } = useContext(DialogContext)
   const [isPending, startTransition] = useTransition()
-  const [imageFiles, setImageFiles] = useState<File[]>([])
+  const [imageFiles, setImageFiles] = useState<ImageItem[]>([])
 
-  function getFiles(files: File[]) {
+  function getFiles(files: ImageItem[]) {
     setImageFiles(files)
   }
 
@@ -86,7 +92,7 @@ export default function FormEditProduct({ product }: { product: Product }) {
         error={errors.price}
       />
 
-      <MultipleImgInput getFiles={getFiles} />
+      <MultipleImgInput getFiles={getFiles} initialFiles={product.imageUrls} />
 
       <select
         className="select select-bordered w-full mt-3"
