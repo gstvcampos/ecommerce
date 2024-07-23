@@ -57,7 +57,7 @@ export default function FormEditProduct({ product }: { product: Product }) {
       if (file.file) {
         formData.append('imageFiles', file.file)
       } else if (file.url) {
-        formData.append('imageFiles', file.url)
+        formData.append('imageKeepUrls', file.url)
       }
     })
 

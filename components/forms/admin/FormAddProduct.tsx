@@ -56,8 +56,6 @@ export default function FormAddProduct() {
     imageFiles.forEach((file) => {
       if (file.file) {
         formData.append('imageFiles', file.file)
-      } else if (file.url) {
-        formData.append('imageFiles', file.url)
       }
     })
 

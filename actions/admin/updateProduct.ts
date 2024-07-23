@@ -9,6 +9,7 @@ export async function updateProduct(id: string, formData: FormData) {
   const description = formData.get('description')?.toString()
   const price = Number(formData.get('price') || 0)
   const imageFiles = formData.getAll('imageFiles') as File[]
+  const imageKeepUrls = formData.getAll('imageKeepUrls') as string[]
   const department = formData.get('department')?.toString()
   const category = formData.get('category')?.toString()
 
@@ -16,7 +17,9 @@ export async function updateProduct(id: string, formData: FormData) {
     return { error: 'ID do produto é obrigatório' }
   }
 
-  const imageUrls = await uploadImage(imageFiles, name || '')
+  const uploadedImageUrls = await uploadImage(imageFiles, name || '')
+
+  const imageUrls = [...imageKeepUrls, ...uploadedImageUrls]
 
   await prisma.product.update({
     where: { id },
