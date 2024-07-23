@@ -13,7 +13,7 @@ export async function addProduct(formData: FormData) {
   const category = formData.get('category')?.toString()
 
   if (!name || !description || !price || !department || !category) {
-    return { error: 'Produto adicionado' }
+    return { error: 'Todos os campos são obrigatorios' }
   }
 
   const imageUrls = await uploadImage(imageFiles, name)

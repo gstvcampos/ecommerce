@@ -16,22 +16,11 @@ export async function updateProduct(id: string, formData: FormData) {
     return { error: 'ID do produto é obrigatório' }
   }
 
-  const updatedData: { [key: string]: any } = {}
-
-  if (name) updatedData.name = name
-  if (description) updatedData.description = description
-  if (price) updatedData.price = price
-  if (department) updatedData.department = department
-  if (category) updatedData.category = category
-
-  if (imageFiles.length > 0) {
-    const imageUrls = await uploadImage(imageFiles, name || '')
-    updatedData.imageUrls = imageUrls
-  }
+  const imageUrls = await uploadImage(imageFiles, name || '')
 
   await prisma.product.update({
     where: { id },
-    data: updatedData,
+    data: { name, description, imageUrls, price, department, category },
   })
   revalidatePath('/')
   return { success: 'Produto atualizado' }
