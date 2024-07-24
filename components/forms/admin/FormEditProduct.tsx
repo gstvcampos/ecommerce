@@ -106,7 +106,6 @@ export default function FormEditProduct({ product }: { product: Product }) {
         <option value="masculino">Masculino</option>
         <option value="feminino">Feminino</option>
         <option value="infantil">Infantil</option>
-        <option value="acessorio">Acessório</option>
       </select>
       {errors.department && (
         <span className="text-red-500">{errors.department.message}</span>
@@ -119,8 +118,6 @@ export default function FormEditProduct({ product }: { product: Product }) {
         <option value="">Escolha a categoria do produto</option>
         <option value="bermuda">Bermuda</option>
         <option value="camisa">Camisa</option>
-        <option value="bolsa">Bolsa</option>
-        <option value="bola">Bola</option>
         {errors.category && (
           <span className="text-red-500">{errors.category.message}</span>
         )}
