@@ -7,13 +7,13 @@ Hashtag Store é um ecommerce desenvolvido com as mais recentes tecnologias para
 
 # Funcionalidades Principais
 
-- Autenticação Segura: Acesse sua conta de forma segura com credenciais usuais, Google ou GitHub.
+- Autenticação Segura: Permitir que os usuários acessem suas contas de forma segura usando credenciais tradicionais, Google ou GitHub.
 
-- Notificações por E-mail: Receba notificações importantes, como confirmações de conta e redefinições de senha, via e-mail.
+- Notificações por E-mail: Enviar e-mails para confirmações de conta e redefinições de senha, garantindo a segurança e a comunicação eficaz com os usuários.
 
-- Carrinho de Compras Anônimo: Adicione itens ao carrinho de compras anonimamente e mantenha-os após fazer login.
+- Carrinho de Compras: Permitir que os usuários adicionem itens ao carrinho de compras mesmo antes de estarem logados. Após o login, os itens permanecem no carrinho para uma transição contínua.
 
-- Estimativa de Envio: Utilize a API do Melhor Envio para estimativas precisas de custos de envio.
+- Estimativa de Envio: Integrar a API do Melhor Envio para fornecer aos usuários estimativas precisas dos custos de envio antes da finalização da compra.
 
 # Tecnologias Utilizadas
 
