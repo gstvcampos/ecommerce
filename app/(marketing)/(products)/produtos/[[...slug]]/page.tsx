@@ -19,7 +19,8 @@ export default async function CategoryPage({
   searchParams,
 }: CategoryPageProps) {
   const page = Number(searchParams?.page) || 1
-  const [department, category] = slug
+  const category = searchParams?.category?.toString()
+  const [department] = slug
 
   let sort = searchParams?.sort
   if (sort instanceof Array) {

@@ -41,7 +41,7 @@ export default function DrawerFilter({ searchParams }: DrawerFilterProps) {
                 {sizeVariants.map((size, idx) => (
                   <li key={idx}>
                     <Link
-                      href={`?${new URLSearchParams({ ...searchParams, size })}`}
+                      href={`?${new URLSearchParams({ ...searchParams, page: '1', size })}`}
                     >
                       {size}
                     </Link>
@@ -57,7 +57,7 @@ export default function DrawerFilter({ searchParams }: DrawerFilterProps) {
                 {categoryVariants.map((category, idx) => (
                   <li key={idx}>
                     <Link
-                      href={`?${new URLSearchParams({ ...searchParams, category })}`}
+                      href={`?${new URLSearchParams({ ...searchParams, page: '1', category })}`}
                     >
                       {category}
                     </Link>

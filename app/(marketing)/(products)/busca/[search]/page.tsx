@@ -1,4 +1,3 @@
-import DrawerFilter from '@/components/layouts/DrawerFilter'
 import DropdownSort from '@/components/layouts/DropdownSort'
 import MaxWidthWrapper from '@/components/layouts/MaxWidthWrapper'
 import PaginationBar from '@/components/layouts/PaginationBar'
@@ -37,7 +36,6 @@ export default async function CategoryPage({
         <div className="flex py-4 justify-between">
           <h2>Você pesquisou por: {search}</h2>
           <div className="flex items-center">
-            <DrawerFilter searchParams={searchParams} />
             <DropdownSort searchParams={searchParams} />
           </div>
         </div>
