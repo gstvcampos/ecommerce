@@ -2,6 +2,9 @@
 
 Hashtag Store é um ecommerce desenvolvido com as mais recentes tecnologias para proporcionar uma experiência de compra online intuitiva e eficiente.
 
+[Deploy](https://hashtagtest.shop/)
+
+
 # Funcionalidades Principais
 
 - Autenticação Segura: Acesse sua conta de forma segura com credenciais usuais, Google ou GitHub.
@@ -33,23 +36,18 @@ Hashtag Store é um ecommerce desenvolvido com as mais recentes tecnologias para
 ```bash
 npm install
 ```
-Configuração do Banco de Dados:
+2. **Configuração do Banco de Dados:**
 
-Configure as variáveis de ambiente para conexão com MongoDB e Prisma.
-Execute as migrações do banco de dados usando Prisma CLI.
-Execução em Ambiente de Desenvolvimento:
+- Configure as variáveis de ambiente para conexão com MongoDB,Prisma, Next Auth, Resend e Cloudinary
 
-bash
-Copiar código
+- Execute as migrações do banco de dados usando Prisma CLI.
+
+2. **Execução em Ambiente de Desenvolvimento:**
+
+```bash
 npm run dev
-Build e Execução em Produção:
+```
 
-bash
-Copiar código
-npm run build
-npm start
-Contribuição
+## Contribuição
+
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull requests para melhorias, correções de bugs, ou novas funcionalidades.
-
-Licença
-Este projeto está licenciado sob a MIT License - veja o arquivo LICENSE para detalhes.
