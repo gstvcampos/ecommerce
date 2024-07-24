@@ -1,9 +1,17 @@
 ## Hashtag Store
 
-Hashtag Store é um ecommerce desenvolvido com as mais recentes tecnologias para proporcionar uma experiência de compra online intuitiva e eficiente.
+Bem-vindo ao Hashtag Store, seu destino para uma experiência de compra online moderna e intuitiva!
+
+
+## Explore e Compre
+
+Visite Hashtag Store agora mesmo para descobrir uma ampla variedade de produtos, desde moda até tecnologia, com a facilidade de uma plataforma construída para se adaptar às suas necessidades.
 
 [Deploy](https://hashtagtest.shop/)
 
+## Tecnologias Utilizadas
+
+Hashtag Store foi desenvolvido utilizando Next.js, aproveitando o poder da junção entre lado cliente e lado servidor para oferecer uma experiência fluida aos usuários. Com o Next.js, conseguimos não só otimizar o carregamento das páginas, mas também proporcionar interações dinâmicas e rápidas, tornando a navegação pelo nosso ecommerce mais ágil e eficiente.
 
 # Funcionalidades Principais
 
