@@ -14,11 +14,13 @@ interface ImageItem {
 interface MultipleImgInputProps {
   getFiles: (files: ImageItem[]) => void
   initialFiles?: string[]
+  resetFiles?: boolean
 }
 
 export default function MultipleImgInput({
   getFiles,
   initialFiles,
+  resetFiles,
 }: MultipleImgInputProps) {
   const [files, setFiles] = useState<ImageItem[]>([])
   const [error, setError] = useState<string | undefined>('')
@@ -32,6 +34,12 @@ export default function MultipleImgInput({
       setFiles(initialFileObjects)
     }
   }, [initialFiles])
+
+  useEffect(() => {
+    if (resetFiles) {
+      setFiles([])
+    }
+  }, [resetFiles])
 
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     setError('')

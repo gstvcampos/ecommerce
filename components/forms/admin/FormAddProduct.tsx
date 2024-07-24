@@ -22,6 +22,7 @@ export default function FormAddProduct() {
   const [error, setError] = useState<string | undefined>('')
   const [success, setSuccess] = useState<string | undefined>('')
   const [imageFiles, setImageFiles] = useState<ImageItem[]>([])
+  const [resetImages, setResetImages] = useState(false)
 
   function getFiles(files: ImageItem[]) {
     setImageFiles(files)
@@ -69,6 +70,7 @@ export default function FormAddProduct() {
 
           if (data?.success) {
             reset()
+            setResetImages(true)
             setSuccess(data.success)
           }
         })
@@ -93,7 +95,7 @@ export default function FormAddProduct() {
         {...register('price')}
         error={errors.price}
       />
-      <MultipleImgInput getFiles={getFiles} />
+      <MultipleImgInput getFiles={getFiles} resetFiles={resetImages} />
       <select
         className="select select-bordered w-full mt-3"
         {...register('department')}
