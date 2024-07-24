@@ -12,9 +12,6 @@ export default function NavItems() {
       <li>
         <Link href="/produtos/infantil">Infantil</Link>
       </li>
-      <li>
-        <Link href="/produtos/acessorios">Acessórios</Link>
-      </li>
     </ul>
   )
 }

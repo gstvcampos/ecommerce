@@ -7,7 +7,7 @@ type DrawerFilterProps = {
 
 export default function DrawerFilter({ searchParams }: DrawerFilterProps) {
   const sizeVariants = ['P', 'M', 'G', 'GG']
-  const categoryVariants = ['camisa', 'bermuda', 'bolsa', 'bola']
+  const categoryVariants = ['camisa', 'bermuda']
 
   return (
     <div className="drawer">
