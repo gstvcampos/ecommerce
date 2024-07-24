@@ -2,11 +2,6 @@
 
 Bem-vindo ao Hashtag Store, seu destino para uma experiência de compra online moderna e intuitiva!
 
-
-## Explore e Compre
-
-Visite Hashtag Store agora mesmo para descobrir uma ampla variedade de produtos, desde moda até tecnologia, com a facilidade de uma plataforma construída para se adaptar às suas necessidades.
-
 [Deploy](https://hashtagtest.shop/)
 
 ## Tecnologias Utilizadas
