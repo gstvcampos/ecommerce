@@ -22,6 +22,7 @@ export default function FormEditProduct({ product }: { product: Product }) {
   const { toggleEditProduct } = useContext(DialogContext)
   const [isPending, startTransition] = useTransition()
   const [imageFiles, setImageFiles] = useState<ImageItem[]>([])
+  const [resetImages, setResetImages] = useState(false)
 
   function getFiles(files: ImageItem[]) {
     setImageFiles(files)
@@ -72,6 +73,7 @@ export default function FormEditProduct({ product }: { product: Product }) {
         if (data?.success) {
           reset()
           toast.success(data.success)
+          setResetImages(true)
           toggleEditProduct()
         }
       })
@@ -96,7 +98,11 @@ export default function FormEditProduct({ product }: { product: Product }) {
         error={errors.price}
       />
 
-      <MultipleImgInput getFiles={getFiles} initialFiles={product.imageUrls} />
+      <MultipleImgInput
+        getFiles={getFiles}
+        initialFiles={product.imageUrls}
+        resetFiles={resetImages}
+      />
 
       <select
         className="select select-bordered w-full mt-3"
