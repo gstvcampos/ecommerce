@@ -115,6 +115,7 @@ export default function FormAddProduct() {
         <option value="bermuda">Bermuda</option>
         <option value="camisa">Camisa</option>
         <option value="bolsa">Bolsa</option>
+        <option value="bola">Bola</option>
         {errors.category && (
           <span className="text-red-500">{errors.category.message}</span>
         )}
